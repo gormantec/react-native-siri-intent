@@ -1,0 +1,18 @@
+{
+  "name": "react-native-siri-intent",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "expo": {
+    "plugin": "./siriIntentModuleConfig.js" 
+  },
+  "keywords": ["expo", "config-plugin", "native-module"],
+  "scripts": {
+  },
+  "dependencies": {
+    "xcode": "^3.0.1"
+  }
+}
