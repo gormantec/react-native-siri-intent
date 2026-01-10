@@ -6,7 +6,8 @@
     "ios",
     "index.js",
     "siriIntentModuleConfig.js",
-    "react-native-siri-intent.podspec"
+    "react-native-siri-intent.podspec",
+    "expo-module.config.json"
   ],
   "expo": {
     "autolinking": {
