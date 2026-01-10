@@ -1,18 +1,18 @@
 {
   "name": "react-native-siri-intent",
   "version": "1.0.0",
-  "description": "Siri Intent native module for Expo",
   "main": "index.js",
-  "type": "commonjs",
+  "files": [
+    "ios",
+    "index.js",
+    "siriIntentModuleConfig.js",
+    "react-native-siri-intent.podspec"
+  ],
   "expo": {
     "autolinking": {
       "ios": {
         "plugin": "./siriIntentModuleConfig.js"
       }
     }
-  },
-  "keywords": ["expo", "react-native", "siri-intent"],
-  "dependencies": {
-    "xcode": "^3.0.1"
   }
 }
