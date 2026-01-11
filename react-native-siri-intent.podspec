@@ -13,8 +13,15 @@ Pod::Spec.new do |s|
   s.platforms      = { :ios => '16.1' }
   s.source         = { :git => 'https://github.com/gormantec/react-native-siri-intent.git', :tag => "v#{s.version}" }
   s.static_framework = true
-  s.source_files   = "ios/**/*.{h,m,mm,swift}"
   s.dependency 'ExpoModulesCore'
+    s.subspec 'Core' do |core|
+    s.source_files   = "ios/**/*.{h,m,mm,swift}"
+    # Exclude the extension file
+    core.exclude_files = 'ios/**/*IntentExtension.swift'
+  end
+  s.subspec 'IntentExtension' do |ext|
+    ext.source_files = 'ios/**/*IntentExtension.swift'
+  end
 
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',

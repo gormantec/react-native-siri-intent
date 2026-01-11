@@ -1,4 +1,4 @@
-const { createRunOncePlugin, withEntitlementsPlist, withXcodeProject } = require('@expo/config-plugins');
+const { createRunOncePlugin, withEntitlementsPlist, withXcodeProject, withDangerousMod } = require('@expo/config-plugins');
 const fs = require('fs');
 const path = require('path');
 const plist = require('@expo/plist'); // Required to parse/write plist files
@@ -53,6 +53,41 @@ const withMyModuleConfig = (config) => {
     }
     return modConfig;
   });
+
+  // 3. Patch the Podfile after it's generated to use subspecs for each target
+  config = withDangerousMod(config, [
+    'ios',
+    async (modConfig) => {
+      const podfilePath = path.join(modConfig.modRequest.projectRoot, 'ios', 'Podfile');
+      if (!fs.existsSync(podfilePath)) {
+        console.warn('Podfile not found, skipping Podfile patch.');
+        return modConfig;
+      }
+      let podfile = fs.readFileSync(podfilePath, 'utf-8');
+
+      // Example: Patch to use subspecs for react-native-siri-intent
+      // Replace:
+      //   pod 'react-native-siri-intent', :path => '../node_modules/react-native-siri-intent'
+      // With:
+      //   pod 'react-native-siri-intent/Core', :path => '../node_modules/react-native-siri-intent'
+      //   pod 'react-native-siri-intent/IntentExtension', :path => '../node_modules/react-native-siri-intent', :configurations => ['Debug', 'Release'], :target => 'SimpleHealthSiriIntent'
+
+      // Patch for main app target (Core subspec)
+      podfile = podfile.replace(
+        /pod ['"]react-native-siri-intent['"],\s*:path => ['"][^'"]+['"]/g,
+        "pod 'react-native-siri-intent/Core', :path => '../node_modules/react-native-siri-intent'"
+      );
+
+      // Patch for extension target (IntentExtension subspec)
+      // This is a simple example; you may need to adjust for your Podfile structure
+      if (!podfile.includes("pod 'react-native-siri-intent/IntentExtension")) {
+        podfile += `\n\n# Add IntentExtension subspec for Siri Intent extension target\npod 'react-native-siri-intent/IntentExtension', :path => '../node_modules/react-native-siri-intent', :target => 'SimpleHealthSiriIntent'\n`;
+      }
+
+      fs.writeFileSync(podfilePath, podfile);
+      return modConfig;
+    },
+  ]);
 
   return config;
 };
