@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.source         = { :git => 'https://github.com/gormantec/react-native-siri-intent.git', :tag => "v#{s.version}" }
   s.static_framework = true
   s.source_files   = "ios/**/*.{h,m,mm,swift}"
-  s.resources      = "ios/**/*.plist"
   s.dependency 'ExpoModulesCore'
 
   s.pod_target_xcconfig = {
