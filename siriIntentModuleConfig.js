@@ -77,12 +77,15 @@ const withSiriIntentModule = (config) => {
 
         filesToCopy.forEach(file => {
             const filePath = path.join(destDir, file);
-            const fileRef = project.addFile(filePath, pbxGroup.uuid);
-
-            if (file.endsWith('.swift')) {
+            if (fs.existsSync(filePath) && typeof filePath === 'string') {
+              const fileRef = project.addFile(filePath, pbxGroup.uuid);
+              if (file.endsWith('.swift')) {
                 sourceFiles.push(fileRef);
-            } else if (file.endsWith('.plist')) {
+              } else if (file.endsWith('.plist')) {
                 resourceFiles.push(fileRef);
+              }
+            } else {
+              console.warn(`[SiriExtension] File does not exist or path invalid: ${filePath} -- ${file}`);
             }
         });
         
@@ -123,7 +126,11 @@ const withSiriIntentModule = (config) => {
 </plist>
 `;
         fs.writeFileSync(entitlementsPath, entitlementsContent.trim());
-        project.addFile(entitlementsPath, pbxGroup.uuid);
+        if (fs.existsSync(entitlementsPath) && typeof entitlementsPath === 'string') {
+          project.addFile(entitlementsPath, pbxGroup.uuid);
+        } else {
+          console.warn(`[SiriExtension] Entitlements file does not exist or path invalid: ${entitlementsPath}`);
+        }
 
 
         // 7. Embed the Extension into the Main App
