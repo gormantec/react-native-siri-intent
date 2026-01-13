@@ -81,10 +81,14 @@ const withSiriIntentModule = (config) => {
             console.warn(`[SiriExtension] filePath: ${filePath}`);
             if (fs.existsSync(filePath) && typeof filePath === 'string') {
               const fileRef = project.addFile(filePath, pbxGroup.uuid);
-              if (file.endsWith('.swift')) {
-                sourceFiles.push(fileRef);
-              } else if (file.endsWith('.plist')) {
-                resourceFiles.push(fileRef);
+              if (fileRef && fileRef.uuid) {
+                if (file.endsWith('.swift')) {
+                  sourceFiles.push(fileRef);
+                } else if (file.endsWith('.plist')) {
+                  resourceFiles.push(fileRef);
+                }
+              } else {
+                console.warn(`[SiriExtension] Failed to add file to Xcode project: ${filePath}`);
               }
             } else {
               console.warn(`[SiriExtension] File does not exist or path invalid: ${filePath} -- ${file}`);
