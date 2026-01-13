@@ -1,2 +1,2 @@
 // index.js
-module.exports = {};
+module.exports = require('./siriIntentModuleConfig');
