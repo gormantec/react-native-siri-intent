@@ -13,6 +13,8 @@ const EXTENSION_BUNDLE_ID_SUFFIX = ".siriintent";
 const APP_GROUP_IDENTIFIER = `group.${pkg.name}`; // Dynamically use package name
 
 const withSiriIntentModule = (config) => {
+
+  console.warn(`[withSiriIntentModule] STARTING configuration for Siri Intent Extension...`);
   
   // 1. Add App Group Entitlement to the MAIN APP
   config = withEntitlementsPlist(config, (modConfig) => {
