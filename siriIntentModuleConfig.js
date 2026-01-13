@@ -77,6 +77,8 @@ const withSiriIntentModule = (config) => {
 
         filesToCopy.forEach(file => {
             const filePath = path.join(destDir, file);
+            console.warn(`[SiriExtension] destDir: ${destDir}`);
+            console.warn(`[SiriExtension] filePath: ${filePath}`);
             if (fs.existsSync(filePath) && typeof filePath === 'string') {
               const fileRef = project.addFile(filePath, pbxGroup.uuid);
               if (file.endsWith('.swift')) {
