@@ -77,10 +77,13 @@ const withSiriIntentModule = (config) => {
 
         filesToCopy.forEach(file => {
             const filePath = path.join(destDir, file);
+            const relFilePath = path.relative(projectRoot, filePath);
             console.warn(`[SiriExtension] destDir: ${destDir}`);
             console.warn(`[SiriExtension] filePath: ${filePath}`);
-            if (fs.existsSync(filePath) && typeof filePath === 'string') {
-              const fileRef = project.addFile(filePath, pbxGroup.uuid);
+            console.warn(`[SiriExtension] relFilePath: ${relFilePath}`);
+            if (fs.existsSync(filePath) && typeof relFilePath === 'string') {
+              const fileRef = project.addFile(relFilePath, pbxGroup.uuid);
+              console.warn(`[SiriExtension] addFile result for ${relFilePath}:`, fileRef);
               if (fileRef && fileRef.uuid) {
                 if (file.endsWith('.swift')) {
                   sourceFiles.push(fileRef);
@@ -88,7 +91,7 @@ const withSiriIntentModule = (config) => {
                   resourceFiles.push(fileRef);
                 }
               } else {
-                console.warn(`[SiriExtension] Failed to add file to Xcode project: ${filePath}`);
+                console.warn(`[SiriExtension] Failed to add file to Xcode project: ${relFilePath}`);
               }
             } else {
               console.warn(`[SiriExtension] File does not exist or path invalid: ${filePath} -- ${file}`);
