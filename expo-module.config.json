@@ -1,5 +1,19 @@
 {
-  "ios": {
-    "modules": ["SimpleHealthSiriIntent"]
+  "name": "react-native-siri-intent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "files": [
+    "ios",
+    "index.js",
+    "siriIntentModuleConfig.js",
+    "react-native-siri-intent.podspec",
+    "expo-module.config.json"
+  ],
+  "expo": {
+    "autolinking": {
+      "ios": {
+        "plugin": "./siriIntentModuleConfig.js"
+      }
+    }
   }
 }

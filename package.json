@@ -15,5 +15,8 @@
         "plugin": "./siriIntentModuleConfig.js"
       }
     }
+  },
+  "devDependencies": {
+    "xcode": "^3.0.1"
   }
 }

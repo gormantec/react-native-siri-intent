@@ -8,7 +8,7 @@
 import AppIntents
 import Foundation
 
-struct NextScheduleIntent: AppIntent {
+struct SiriIntent: AppIntent {
     static var title: LocalizedStringResource = "Next Schedule Item"
 
     func perform() async throws -> some IntentResult {
