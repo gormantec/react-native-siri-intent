@@ -97,6 +97,7 @@ const withSiriIntentModule = (config) => {
         
         // 4. Add Build Phases using the file references
         // Sources
+        console.warn(`[SiriExtension] sourceFiles: ${sourceFiles}`);
         project.addBuildPhase(sourceFiles.map(f => f.uuid), 'PBXSourcesBuildPhase', 'Sources', target.uuid);
         
         // Resources (for the Info.plist)
