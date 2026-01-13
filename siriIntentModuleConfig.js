@@ -142,15 +142,19 @@ const withSiriIntentModule = (config) => {
 
         // 7. Embed the Extension into the Main App
         const mainTarget = project.getFirstTarget();
-        const mainTargetName = mainTarget.firstOptions.name.replace(/"/g, '');
-        if (mainTargetName === appName) { // Ensure we're modifying the main app target
-            project.addBuildPhase(
-                [target.productFile.basename],
-                'PBXCopyFilesBuildPhase',
-                'Embed App Extensions',
-                mainTarget.uuid,
-                'app_extension'
-            );
+        if (mainTarget && mainTarget.firstOptions && mainTarget.firstOptions.name) {
+          const mainTargetName = mainTarget.firstOptions.name.replace(/"/g, '');
+          if (mainTargetName === appName) { // Ensure we're modifying the main app target
+              project.addBuildPhase(
+                  [target.productFile.basename],
+                  'PBXCopyFilesBuildPhase',
+                  'Embed App Extensions',
+                  mainTarget.uuid,
+                  'app_extension'
+              );
+          }
+        } else {
+          console.warn('[SiriExtension] Could not find main app target for embedding extension.');
         }
     }
 
