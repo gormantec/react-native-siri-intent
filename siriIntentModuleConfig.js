@@ -1,8 +1,7 @@
 const { 
   createRunOncePlugin, 
   withEntitlementsPlist, 
-  withXcodeProject, 
-  IOSConfig 
+  withXcodeProject
 } = require('@expo/config-plugins');
 const fs = require('fs');
 const path = require('path');
@@ -11,12 +10,11 @@ const pkg = require('./package.json');
 
 const EXTENSION_NAME = "SimpleHealthSiriIntent";
 const EXTENSION_BUNDLE_ID_SUFFIX = ".siriintent";
-const APP_GROUP_IDENTIFIER = "group.com.gormantec.simplehealth"; // Ensure this matches your Apple Developer Portal
+const APP_GROUP_IDENTIFIER = `group.${pkg.name}`; // Dynamically use package name
 
 const withSiriIntentModule = (config) => {
   
   // 1. Add App Group Entitlement to the MAIN APP
-  // (Kept from your old script)
   config = withEntitlementsPlist(config, (modConfig) => {
     const existingGroups = modConfig.modResults["com.apple.security.application-groups"] || [];
     if (!existingGroups.includes(APP_GROUP_IDENTIFIER)) {
@@ -29,13 +27,12 @@ const withSiriIntentModule = (config) => {
   });
 
   // 2. Create the Extension Target & Embed it
-  config = withXcodeProject(config, async (modConfig) => {
+  config = withXcodeProject(config, (modConfig) => {
     const project = modConfig.modResults;
     const projectRoot = modConfig.modRequest.projectRoot;
+    const appName = modConfig.modRequest.projectName;
     
     // A. Define Paths
-    // We assume the source files are in your node_modules/react-native-siri-intent/ios/SiriExtension
-    // Adjust 'sourceDir' if you are running this locally in the library repo vs inside an app
     const sourceDir = path.join(projectRoot, 'node_modules', 'react-native-siri-intent', 'ios', 'SiriExtension');
     const destDir = path.join(projectRoot, 'ios', EXTENSION_NAME);
 
@@ -44,14 +41,11 @@ const withSiriIntentModule = (config) => {
       fs.mkdirSync(destDir, { recursive: true });
     }
     
-    // Copy the specific files needed for the extension
-    // Ensure these exist in your source folder!
-    const filesToCopy = ['SimpleHealthSiriIntentExtension.swift', 'Info.plist','SiriIntent.swift'];
+    const filesToCopy = ['SimpleHealthSiriIntentExtension.swift', 'Info.plist', 'SiriIntent.swift'];
     
     filesToCopy.forEach(file => {
         const src = path.join(sourceDir, file);
         const dst = path.join(destDir, file);
-        // Only copy if source exists (prevents crash if path is wrong)
         if (fs.existsSync(src)) {
             fs.copyFileSync(src, dst);
         } else {
@@ -59,89 +53,89 @@ const withSiriIntentModule = (config) => {
         }
     });
 
-    // C. Create the Target in Xcode
+    // C. Create and Configure the Target in Xcode
     const targetName = EXTENSION_NAME;
     const bundleId = `${config.ios.bundleIdentifier}${EXTENSION_BUNDLE_ID_SUFFIX}`;
     
-    // Check if target exists to avoid duplication
     let target = project.pbxTargetByName(targetName);
     
     if (!target) {
         console.log(`[SiriExtension] Creating new App Extension Target: ${targetName}`);
         
-        // 1. Add Target
-        target = project.addTarget(
-            targetName,
-            'app_extension', 
-            targetName,
-            bundleId
-        );
+        // 1. Add the Target
+        target = project.addTarget(targetName, 'app_extension', targetName, bundleId);
 
-        // 2. Create a PBXGroup for the files
-        const pbxGroup = project.addPbxGroup(
-            filesToCopy,
-            targetName,
-            targetName
-        );
+        // 2. Create a PBXGroup for the extension files
+        const pbxGroup = project.addPbxGroup([], targetName, targetName);
+
+        // 3. Add the copied files to the Xcode project and the new group
+        // This is the critical change: we get file reference objects back
+        const sourceFiles = [];
+        const resourceFiles = [];
+
+        filesToCopy.forEach(file => {
+            const filePath = path.join(destDir, file);
+            const fileRef = project.addFile(filePath, pbxGroup.uuid);
+
+            if (file.endsWith('.swift')) {
+                sourceFiles.push(fileRef);
+            } else if (file.endsWith('.plist')) {
+                resourceFiles.push(fileRef);
+            }
+        });
         
-        // Add group to main project
-        const mainGroup = project.pbxGroupByName('CustomTemplate');
-        if (mainGroup) {
-            mainGroup.children.push({ value: pbxGroup.uuid, comment: targetName });
-        }
-
-        // 3. Add Build Phases
+        // 4. Add Build Phases using the file references
         // Sources
-        project.addBuildPhase(
-            ['SimpleHealthSiriIntentExtension.swift','SiriIntent.swift'],
-            'PBXSourcesBuildPhase',
-            'Sources',
-            target.uuid
-        );
+        project.addBuildPhase(sourceFiles.map(f => f.uuid), 'PBXSourcesBuildPhase', 'Sources', target.uuid);
         
-        // Resources
-        project.addBuildPhase(
-            ['Info.plist'],
-            'PBXResourcesBuildPhase',
-            'Resources',
-            target.uuid
-        );
+        // Resources (for the Info.plist)
+        project.addBuildPhase(resourceFiles.map(f => f.uuid), 'PBXResourcesBuildPhase', 'Resources', target.uuid);
 
-        // 4. Update Build Settings
+        // 5. Update Build Settings
         const configurations = project.pbxXCBuildConfigurationSection();
         for (const key in configurations) {
             const conf = configurations[key];
-            if (!conf.buildSettings) continue;
-            
-            // Only modify settings for our specific target
-            // Note: xcode lib doesn't make it easy to filter by target in this loop, 
-            // but usually we set specific props based on the product name.
-            if (conf.buildSettings.PRODUCT_NAME === `"${targetName}"` || conf.buildSettings.PRODUCT_NAME === targetName) {
+            if (conf.buildSettings && conf.buildSettings.PRODUCT_NAME === `"${targetName}"`) {
                 conf.buildSettings.INFOPLIST_FILE = `${targetName}/Info.plist`;
-                conf.buildSettings.IPHONEOS_DEPLOYMENT_TARGET = '16.0';
+                conf.buildSettings.IPHONEOS_DEPLOYMENT_TARGET = '16.0'; // Or your desired version
                 conf.buildSettings.SWIFT_VERSION = '5.0';
-                conf.buildSettings.MARKETING_VERSION = '1.0';
-                conf.buildSettings.CURRENT_PROJECT_VERSION = '1';
-                // Ensure the extension has the App Group entitlement too!
-                // (You would ideally create a .entitlements file and link it here, 
-                // but for simplicity, we are skipping the file creation for now).
+                conf.buildSettings.PRODUCT_BUNDLE_IDENTIFIER = bundleId;
+                conf.buildSettings.CODE_SIGN_ENTITLEMENTS = `${targetName}/${targetName}.entitlements`;
+                conf.buildSettings.CODE_SIGN_STYLE = "Automatic";
+                conf.buildSettings.DEVELOPMENT_TEAM = config.ios.appleTeamId;
             }
         }
-
-        // 5. Embed the Extension into the Main App
-        // This is the critical step to make it install on the phone
-        const mainTarget = project.getFirstTarget();
         
-        // Check if "Embed Foundation Extensions" phase exists, if not, we might need to create it
-        // For simplicity, we use the raw addBuildPhase with the correct destination code (13)
-        project.addBuildPhase(
-            [target.productFile.basename], 
-            'PBXCopyFilesBuildPhase',
-            'Embed Foundation Extensions', 
-            mainTarget.uuid, 
-            'app_extension',
-            '13' // 13 == PlugIns directory
-        );
+        // 6. Create entitlements file for the extension
+        const entitlementsPath = path.join(destDir, `${targetName}.entitlements`);
+        const entitlementsContent = `
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>${APP_GROUP_IDENTIFIER}</string>
+	</array>
+</dict>
+</plist>
+`;
+        fs.writeFileSync(entitlementsPath, entitlementsContent.trim());
+        project.addFile(entitlementsPath, pbxGroup.uuid);
+
+
+        // 7. Embed the Extension into the Main App
+        const mainTarget = project.getFirstTarget();
+        const mainTargetName = mainTarget.firstOptions.name.replace(/"/g, '');
+        if (mainTargetName === appName) { // Ensure we're modifying the main app target
+            project.addBuildPhase(
+                [target.productFile.basename],
+                'PBXCopyFilesBuildPhase',
+                'Embed App Extensions',
+                mainTarget.uuid,
+                'app_extension'
+            );
+        }
     }
 
     return modConfig;
