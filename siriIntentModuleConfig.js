@@ -10,7 +10,7 @@ const pkg = require('./package.json');
 
 const EXTENSION_NAME = "SimpleHealthSiriIntent";
 const EXTENSION_BUNDLE_ID_SUFFIX = ".siriintent";
-const APP_GROUP_IDENTIFIER = `group.${pkg.name}`; // Dynamically use package name
+const APP_GROUP_IDENTIFIER = "group.com.gormantec.simplehealth"; // Dynamically use package name
 
 const withSiriIntentModule = (config) => {
 
