@@ -14,9 +14,6 @@ const APP_GROUP_IDENTIFIER = "group.com.gormantec.simplehealth"; // Dynamically 
 
 const withSiriIntentModule = (config) => {
 
-  console.warn(`[withSiriIntentModule] STARTING configuration for Siri Intent Extension...`);
-  console.warn(`[withSiriIntentModule] config.ios.bundleIdentifier:`, config.ios && config.ios.bundleIdentifier);
-
   // 1. Add App Group Entitlement to the MAIN APP
   config = withEntitlementsPlist(config, (modConfig) => {
     const existingGroups = modConfig.modResults["com.apple.security.application-groups"] || [];
@@ -34,19 +31,16 @@ const withSiriIntentModule = (config) => {
     const project = modConfig.modResults;
     const projectRoot = modConfig.modRequest.projectRoot;
     const appName = modConfig.modRequest.projectName;
-    console.warn(`[SiriExtension] projectRoot:`, projectRoot);
-    console.warn(`[SiriExtension] appName:`, appName);
+    console.info(`[SiriExtension] withXcodeProject() project:${project} appName:${appName}`);
 
     // A. Define Paths
     const sourceDir = path.join(projectRoot, 'node_modules', 'react-native-siri-intent', 'ios', 'SiriExtension');
     const destDir = path.join(projectRoot, 'ios', EXTENSION_NAME);
-    console.warn(`[SiriExtension] sourceDir:`, sourceDir);
-    console.warn(`[SiriExtension] destDir:`, destDir);
 
     // B. Copy Extension Files to ios/ project folder
     if (!fs.existsSync(destDir)) {
       fs.mkdirSync(destDir, { recursive: true });
-      console.warn(`[SiriExtension] Created destDir:`, destDir);
+      console.info(`[SiriExtension] Created destDir:`, destDir);
     }
     
     const filesToCopy = ['SimpleHealthSiriIntentExtension.swift', 'Info.plist', 'SiriIntent.swift'];
@@ -54,10 +48,9 @@ const withSiriIntentModule = (config) => {
     filesToCopy.forEach(file => {
         const src = path.join(sourceDir, file);
         const dst = path.join(destDir, file);
-        console.warn(`[SiriExtension] Copying file: src=${src}, dst=${dst}`);
+        console.info(`[SiriExtension] Copying file: ${file}`);
         if (fs.existsSync(src)) {
             fs.copyFileSync(src, dst);
-            console.warn(`[SiriExtension] Copied file: ${src} -> ${dst}`);
         } else {
             console.warn(`[SiriExtension] Could not find source file: ${src}`);
         }
@@ -66,23 +59,18 @@ const withSiriIntentModule = (config) => {
     // C. Create and Configure the Target in Xcode
     const targetName = EXTENSION_NAME;
     const bundleId = `${config.ios.bundleIdentifier}${EXTENSION_BUNDLE_ID_SUFFIX}`;
-    console.warn(`[SiriExtension] targetName:`, targetName);
-    console.warn(`[SiriExtension] bundleId:`, bundleId);
+    console.info(`[SiriExtension] targetName:`, targetName);
+    console.info(`[SiriExtension] bundleId:`, bundleId);
 
     let target = project.pbxTargetByName(targetName);
-    console.warn(`[SiriExtension] pbxTargetByName(${targetName}):`, target);
 
     if (!target) {
-        console.log(`[SiriExtension] Creating new App Extension Target: ${targetName}`);
+        console.info(`[SiriExtension] Creating new App Extension Target: ${targetName}`);
         
         // 1. Add the Target
         target = project.addTarget(targetName, 'app_extension', targetName, bundleId);
-        console.warn(`[SiriExtension] addTarget result:`, target);
-
         // 2. Create a PBXGroup for the extension files
         const pbxGroup = project.addPbxGroup([], targetName, targetName);
-        console.warn(`[SiriExtension] addPbxGroup result:`, pbxGroup);
-
         // 3. Add the copied files to the Xcode project and the new group
         const sourceFiles = [];
         const resourceFiles = [];
@@ -90,26 +78,14 @@ const withSiriIntentModule = (config) => {
         filesToCopy.forEach(file => {
             const filePath = path.join(destDir, file);
             const relFilePath = path.relative(path.join(projectRoot, 'ios'), filePath);
-            console.warn(`[SiriExtension] destDir: ${destDir}`);
-            console.warn(`[SiriExtension] filePath: ${filePath}`);
-            console.warn(`[SiriExtension] relFilePath: ${relFilePath}`);
-            console.warn(`[SiriExtension] pbxGroup.uuid: ${pbxGroup.uuid}`);
             // Log file stats and permissions
             try {
               const stat = fs.statSync(filePath);
-              console.warn(`[SiriExtension] statSync for ${filePath}:`, stat);
             } catch (err) {
               console.warn(`[SiriExtension] statSync error for ${filePath}:`, err);
             }
             if (fs.existsSync(filePath) && typeof relFilePath === 'string') {
-
-              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: pbxGroup.uuid:`, pbxGroup.uuid);
-              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: pbxGroup.uuid:`, pbxGroup);
               const fileRef = project.addFile(relFilePath, pbxGroup.uuid);
-              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: fileRef:`, fileRef);
-              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: uuid:`, fileRef.uuid);
-              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: fileRef:`, fileRef.fileRef);
-              console.warn(`[SiriExtension] file:`, file);
               if (fileRef && fileRef.fileRef) {
                 if (file.endsWith('.swift')) {
                   sourceFiles.push(fileRef.fileRef);
@@ -125,9 +101,9 @@ const withSiriIntentModule = (config) => {
         });
         
         // 4. Add Build Phases using the file references
-        console.warn(`[SiriExtension] sourceFiles:`, sourceFiles);
+        console.info(`[SiriExtension] sourceFiles:`, sourceFiles);
         project.addBuildPhase(sourceFiles, 'PBXSourcesBuildPhase', 'Sources', target.uuid);
-        console.warn(`[SiriExtension] resourceFiles:`, resourceFiles);
+        console.info(`[SiriExtension] resourceFiles:`, resourceFiles);
         project.addBuildPhase(resourceFiles, 'PBXResourcesBuildPhase', 'Resources', target.uuid);
 
         // 5. Update Build Settings
@@ -162,19 +138,16 @@ const withSiriIntentModule = (config) => {
 `;
         fs.writeFileSync(entitlementsPath, entitlementsContent.trim());
         if (fs.existsSync(entitlementsPath) && typeof entitlementsPath === 'string') {
-          console.warn(`[SiriExtension] addFile result1 for entitlements: ${entitlementsPath}, ${pbxGroup.uuid}, ${pbxGroup}`);
+          console.info(`[SiriExtension] addFile entitlements: ${entitlementsPath}, ${pbxGroup.uuid}, ${pbxGroup}`);
           const entFileRef = project.addFile(entitlementsPath, pbxGroup.uuid);
-          console.warn(`[SiriExtension] addFile result1 for entitlements entFileRef:`, entFileRef);
-          console.warn(`[SiriExtension] addFile result1 for entitlements uuid:`, entFileRef.uuid);
-          console.warn(`[SiriExtension] addFile result1 for entitlements fileRef:`, entFileRef.fileRef);
         } else {
           console.warn(`[SiriExtension] Entitlements file does not exist or path invalid: ${entitlementsPath}`);
         }
 
         // 7. Embed the Extension into the Main App
         const mainTarget = project.getFirstTarget();
-        console.warn(`[SiriExtension] getFirstTarget() result:`, mainTarget);
-        console.warn(`[SiriExtension] appName:`, appName);
+        console.info(`[SiriExtension] getFirstTarget() result:`, mainTarget);
+        console.info(`[SiriExtension] appName:`, appName);
         if (mainTarget && mainTarget.firstOptions && mainTarget.firstOptions.name) {
           const mainTargetName = mainTarget.firstOptions.name.replace(/"/g, '');
           console.warn(`[SiriExtension] mainTargetName:`, mainTargetName);
