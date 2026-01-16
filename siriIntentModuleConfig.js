@@ -161,7 +161,7 @@ const withSiriIntentModule = (config) => {
 
           if (mainTargetName === appName) {
               project.addBuildPhase(
-                  [target.productFile.basename],
+                  [`${targetName}.appex`],
                   'PBXCopyFilesBuildPhase',
                   'Embed App Extensions',
                   mainTarget.uuid,
