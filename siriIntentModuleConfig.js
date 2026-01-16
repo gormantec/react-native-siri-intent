@@ -108,12 +108,13 @@ const withSiriIntentModule = (config) => {
               const fileRef = project.addFile(relFilePath, pbxGroup.uuid);
               console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: fileRef:`, fileRef);
               console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: uuid:`, fileRef.uuid);
+              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: uuid:`, fileRef.fileRef);
               console.warn(`[SiriExtension] file:`, file);
-              if (fileRef && fileRef.uuid) {
+              if (fileRef && fileRef.fileRef) {
                 if (file.endsWith('.swift')) {
-                  sourceFiles.push(fileRef);
+                  sourceFiles.push(fileRef.fileRef);
                 } else if (file.endsWith('.plist')) {
-                  resourceFiles.push(fileRef);
+                  resourceFiles.push(fileRef.fileRef);
                 }
               } else {
                 console.warn(`[SiriExtension] Failed to add file to Xcode project: ${relFilePath}`);
@@ -165,6 +166,7 @@ const withSiriIntentModule = (config) => {
           const entFileRef = project.addFile(entitlementsPath, pbxGroup.uuid);
           console.warn(`[SiriExtension] addFile result1 for entitlements entFileRef:`, entFileRef);
           console.warn(`[SiriExtension] addFile result1 for entitlements uuid:`, entFileRef.uuid);
+          console.warn(`[SiriExtension] addFile result1 for entitlements fileRef:`, entFileRef.fileRef);
         } else {
           console.warn(`[SiriExtension] Entitlements file does not exist or path invalid: ${entitlementsPath}`);
         }
