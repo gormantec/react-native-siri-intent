@@ -89,15 +89,25 @@ const withSiriIntentModule = (config) => {
 
         filesToCopy.forEach(file => {
             const filePath = path.join(destDir, file);
-            //const relFilePath = path.relative(projectRoot, filePath);
             const relFilePath = path.relative(path.join(projectRoot, 'ios'), filePath);
             console.warn(`[SiriExtension] destDir: ${destDir}`);
             console.warn(`[SiriExtension] filePath: ${filePath}`);
             console.warn(`[SiriExtension] relFilePath: ${relFilePath}`);
             console.warn(`[SiriExtension] pbxGroup.uuid: ${pbxGroup.uuid}`);
+            // Log file stats and permissions
+            try {
+              const stat = fs.statSync(filePath);
+              console.warn(`[SiriExtension] statSync for ${filePath}:`, stat);
+            } catch (err) {
+              console.warn(`[SiriExtension] statSync error for ${filePath}:`, err);
+            }
             if (fs.existsSync(filePath) && typeof relFilePath === 'string') {
+
+              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: pbxGroup.uuid:`, pbxGroup.uuid);
+              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: pbxGroup.uuid:`, pbxGroup);
               const fileRef = project.addFile(relFilePath, pbxGroup.uuid);
-              console.warn(`[SiriExtension] addFile result for ${relFilePath}: uuid:`, fileRef.uuid);
+              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: fileRef:`, fileRef);
+              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: uuid:`, fileRef.uuid);
               console.warn(`[SiriExtension] file:`, file);
               if (fileRef && fileRef.uuid) {
                 if (file.endsWith('.swift')) {
@@ -151,9 +161,10 @@ const withSiriIntentModule = (config) => {
 `;
         fs.writeFileSync(entitlementsPath, entitlementsContent.trim());
         if (fs.existsSync(entitlementsPath) && typeof entitlementsPath === 'string') {
-          console.warn(`[SiriExtension] addFile result for entitlements: ${entitlementsPath}, ${pbxGroup.uuid}`);
+          console.warn(`[SiriExtension] addFile result1 for entitlements: ${entitlementsPath}, ${pbxGroup.uuid}, ${pbxGroup}`);
           const entFileRef = project.addFile(entitlementsPath, pbxGroup.uuid);
-          console.warn(`[SiriExtension] addFile result for entitlements uuid:`, entFileRef.uuid);
+          console.warn(`[SiriExtension] addFile result1 for entitlements entFileRef:`, entFileRef);
+          console.warn(`[SiriExtension] addFile result1 for entitlements uuid:`, entFileRef.uuid);
         } else {
           console.warn(`[SiriExtension] Entitlements file does not exist or path invalid: ${entitlementsPath}`);
         }
