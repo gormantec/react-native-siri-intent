@@ -89,7 +89,8 @@ const withSiriIntentModule = (config) => {
 
         filesToCopy.forEach(file => {
             const filePath = path.join(destDir, file);
-            const relFilePath = path.relative(projectRoot, filePath);
+            //const relFilePath = path.relative(projectRoot, filePath);
+            const relFilePath = path.relative(path.join(projectRoot, 'ios'), filePath);
             console.warn(`[SiriExtension] destDir: ${destDir}`);
             console.warn(`[SiriExtension] filePath: ${filePath}`);
             console.warn(`[SiriExtension] relFilePath: ${relFilePath}`);
