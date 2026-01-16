@@ -156,7 +156,7 @@ const withSiriIntentModule = (config) => {
 
           console.warn(`[SiriExtension] target ${target}`);
           console.warn(`[SiriExtension] target.productFile ${target.productFile}`);
-          console.warn(`[SiriExtension] target.productFile.basename ${target.productFile.basename}`);
+
 
 
           if (mainTargetName === appName) {
