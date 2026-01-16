@@ -146,7 +146,9 @@ const withSiriIntentModule = (config) => {
 
         // 7. Embed the Extension into the Main App
         const mainTarget = project.getFirstTarget();
-        console.info(`[SiriExtension] getFirstTarget() result:`, mainTarget);
+        console.info(`[SiriExtension] getFirstTarget() resmainTargetlt:`, mainTarget);
+        console.info(`[SiriExtension] getFirstTarget() firstTarget:`, mainTarget.firstTarget);
+        console.info(`[SiriExtension] getFirstTarget() name:`, mainTmainTarget.firstTarget.name);
         console.info(`[SiriExtension] appName:`, appName);
         if (mainTarget && mainTarget.firstTarget && mainTarget.firstTarget.name) {
           const mainTargetName = mainTarget.firstTarget.name.replace(/"/g, '');
