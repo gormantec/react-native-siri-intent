@@ -108,7 +108,7 @@ const withSiriIntentModule = (config) => {
               const fileRef = project.addFile(relFilePath, pbxGroup.uuid);
               console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: fileRef:`, fileRef);
               console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: uuid:`, fileRef.uuid);
-              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: uuid:`, fileRef.fileRef);
+              console.warn(`[SiriExtension] addFile result2 for ${relFilePath}: fileRef:`, fileRef.fileRef);
               console.warn(`[SiriExtension] file:`, file);
               if (fileRef && fileRef.fileRef) {
                 if (file.endsWith('.swift')) {
@@ -126,9 +126,9 @@ const withSiriIntentModule = (config) => {
         
         // 4. Add Build Phases using the file references
         console.warn(`[SiriExtension] sourceFiles:`, sourceFiles);
-        project.addBuildPhase(sourceFiles.map(f => f.uuid), 'PBXSourcesBuildPhase', 'Sources', target.uuid);
+        project.addBuildPhase(sourceFiles, 'PBXSourcesBuildPhase', 'Sources', target.uuid);
         console.warn(`[SiriExtension] resourceFiles:`, resourceFiles);
-        project.addBuildPhase(resourceFiles.map(f => f.uuid), 'PBXResourcesBuildPhase', 'Resources', target.uuid);
+        project.addBuildPhase(resourceFiles, 'PBXResourcesBuildPhase', 'Resources', target.uuid);
 
         // 5. Update Build Settings
         const configurations = project.pbxXCBuildConfigurationSection();
