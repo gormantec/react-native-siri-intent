@@ -69,6 +69,10 @@ const withSiriIntentModule = (config) => {
         
         // 1. Add the Target
         target = project.addTarget(targetName, 'app_extension', targetName, bundleId);
+        
+        const productFileRef = project.addProductFile(`${targetName}.appex`, { target: target.uuid });
+        target.productFile = productFileRef;
+        
         // 2. Create a PBXGroup for the extension files
         const pbxGroup = project.addPbxGroup([], targetName, targetName);
         // 3. Add the copied files to the Xcode project and the new group
@@ -161,7 +165,7 @@ const withSiriIntentModule = (config) => {
 
           if (mainTargetName === appName) {
               project.addBuildPhase(
-                  [`${targetName}.appex`],
+                  [target.productFile.fileRef],
                   'PBXCopyFilesBuildPhase',
                   'Embed App Extensions',
                   mainTarget.uuid,
