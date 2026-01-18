@@ -129,6 +129,9 @@ const withSiriIntentModule = (config) => {
         
         // 6. Create entitlements file for the extension
         const entitlementsPath = path.join(destDir, `${targetName}.entitlements`);
+        const relEntitlementsPath = path.relative(path.join(projectRoot, 'ios'), entitlementsPath);
+
+
         const entitlementsContent = `
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -143,10 +146,10 @@ const withSiriIntentModule = (config) => {
 `;
         fs.writeFileSync(entitlementsPath, entitlementsContent.trim());
         if (fs.existsSync(entitlementsPath) && typeof entitlementsPath === 'string') {
-          console.info(`[SiriExtension] (146) project.addFile(path=${entitlementsPath}, pbxGroup.uuid=${pbxGroup.uuid})`);
-          const entFileRef = project.addFile(entitlementsPath, pbxGroup.uuid);
+          console.info(`[SiriExtension] (146) project.addFile(path=${relEntitlementsPath}, pbxGroup.uuid=${pbxGroup.uuid})`);
+          const entFileRef = project.addFile(relEntitlementsPath, pbxGroup.uuid);
         } else {
-          console.warn(`[SiriExtension] Entitlements file does not exist or path invalid: ${entitlementsPath}`);
+          console.warn(`[SiriExtension] Entitlements file does not exist or path invalid: ${relEntitlementsPath}`);
         }
 
         // 7. Embed the Extension into the Main App
