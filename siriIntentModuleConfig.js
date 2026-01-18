@@ -89,6 +89,7 @@ const withSiriIntentModule = (config) => {
               console.warn(`[SiriExtension] statSync error for ${filePath}:`, err);
             }
             if (fs.existsSync(filePath) && typeof relFilePath === 'string') {
+              console.info(`[SiriExtension] (92) project.addFile(path=${relFilePath}, pbxGroup.uuid=${pbxGroup.uuid})`);
               const fileRef = project.addFile(relFilePath, pbxGroup.uuid);
               if (fileRef && fileRef.fileRef) {
                 if (file.endsWith('.swift')) {
@@ -142,7 +143,7 @@ const withSiriIntentModule = (config) => {
 `;
         fs.writeFileSync(entitlementsPath, entitlementsContent.trim());
         if (fs.existsSync(entitlementsPath) && typeof entitlementsPath === 'string') {
-          console.info(`[SiriExtension] addFile entitlements: ${entitlementsPath}, ${pbxGroup.uuid}, ${pbxGroup}`);
+          console.info(`[SiriExtension] (146) project.addFile(path=${entitlementsPath}, pbxGroup.uuid=${pbxGroup.uuid})`);
           const entFileRef = project.addFile(entitlementsPath, pbxGroup.uuid);
         } else {
           console.warn(`[SiriExtension] Entitlements file does not exist or path invalid: ${entitlementsPath}`);
