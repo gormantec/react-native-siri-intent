@@ -89,17 +89,16 @@ const withSiriIntentModule = (config) => {
 
         filesToCopy.forEach(file => {
             const filePath = path.join(destDir, file);
-            const relFilePath = file;//const relFilePath = path.relative(path.join(projectRoot, 'ios'), filePath);
-            
+         
             // Log file stats and permissions
             try {
               const stat = fs.statSync(filePath);
             } catch (err) {
               console.warn(`[SiriExtension] statSync error for ${filePath}:`, err);
             }
-            if (fs.existsSync(filePath) && typeof relFilePath === 'string') {
-              console.info(`[SiriExtension] (92) project.addFile(path=${relFilePath}, pbxGroup.uuid=${pbxGroup.uuid})`);
-              const fileRef = project.addFile(relFilePath, pbxGroup.uuid);
+            if (fs.existsSync(filePath) && typeof file === 'string') {
+              console.info(`[SiriExtension] (92) project.addFile(path=${file}, pbxGroup.uuid=${pbxGroup.uuid})`);
+              const fileRef = project.addFile(file, pbxGroup.uuid);
               if (fileRef) {
                   // Depending on your xcode library version, it might be fileRef.uuid or fileRef.fileRef
                   const actualUuid = fileRef.uuid || fileRef.fileRef; 
@@ -110,7 +109,7 @@ const withSiriIntentModule = (config) => {
                       resourceFiles.push(actualUuid);
                   }
               } else {
-                console.warn(`[SiriExtension] Failed to add file to Xcode project: ${relFilePath}`);
+                console.warn(`[SiriExtension] Failed to add file to Xcode project: ${file}`);
               }
             } else {
               console.warn(`[SiriExtension] File does not exist or path invalid: ${filePath} -- ${file}`);
@@ -140,9 +139,9 @@ const withSiriIntentModule = (config) => {
         }
         
         // 6. Create entitlements file for the extension
+        const entitlementsFilename=`${targetName}.entitlements`
         const entitlementsPath = path.join(destDir, `${targetName}.entitlements`);
-        const relEntitlementsPath = `${targetName}.entitlements`;//path.relative(path.join(projectRoot, 'ios'), entitlementsPath);
-
+        
 
         const entitlementsContent = `
 <?xml version="1.0" encoding="UTF-8"?>
@@ -158,13 +157,13 @@ const withSiriIntentModule = (config) => {
 `;
         fs.writeFileSync(entitlementsPath, entitlementsContent.trim());
         if (fs.existsSync(entitlementsPath) && typeof entitlementsPath === 'string') {
-          console.info(`[SiriExtension] (146) project.addFile(path=${relEntitlementsPath}, pbxGroup.uuid=${pbxGroup.uuid})`);
-          const entFileRef = project.addFile(relEntitlementsPath, pbxGroup.uuid);
+          console.info(`[SiriExtension] (146) project.addFile(path=${entitlementsFilename}, pbxGroup.uuid=${pbxGroup.uuid})`);
+          const entFileRef = project.addFile(entitlementsFilename, pbxGroup.uuid);
           if (entFileRef) {
               resourceFiles.push(entFileRef.uuid || entFileRef.fileRef);
           }
         } else {
-          console.warn(`[SiriExtension] Entitlements file does not exist or path invalid: ${relEntitlementsPath}`);
+          console.warn(`[SiriExtension] Entitlements file does not exist or path invalid file: ${entitlementsFilename}`);
         }
 
         // 7. Embed the Extension into the Main App
