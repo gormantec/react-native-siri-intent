@@ -167,6 +167,7 @@ const withSiriIntentModule = (config) => {
         if (mainTarget && mainTarget.firstTarget && mainTarget.firstTarget.name) {
           const mainTargetName = mainTarget.firstTarget.name.replace(/"/g, '');
           console.warn(`[SiriExtension] mainTargetName:`, mainTargetName);
+          console.warn(`[SiriExtension] [target.productReference]:`, [target.productReference]);
           if (mainTargetName === appName) {
               project.addBuildPhase(
                   [target.productReference], 
