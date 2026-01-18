@@ -75,6 +75,16 @@ const withSiriIntentModule = (config) => {
         
         // 2. Create a PBXGroup for the extension files
         const pbxGroup = project.addPbxGroup([], targetName, targetName);
+        const mainGroupKey = project.getFirstProject().firstProject.mainGroup;
+
+        // Link the new group to the root of the project
+        project.getPBXGroupByKey(mainGroupKey).children.push({
+            value: pbxGroup.uuid,
+            comment: targetName
+        });
+
+
+
         // 3. Add the copied files to the Xcode project and the new group
         const sourceFiles = [];
         const resourceFiles = [];
