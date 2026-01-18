@@ -81,7 +81,8 @@ const withSiriIntentModule = (config) => {
 
         filesToCopy.forEach(file => {
             const filePath = path.join(destDir, file);
-            const relFilePath = path.relative(path.join(projectRoot, 'ios'), filePath);
+            const relFilePath = file;//const relFilePath = path.relative(path.join(projectRoot, 'ios'), filePath);
+            
             // Log file stats and permissions
             try {
               const stat = fs.statSync(filePath);
@@ -129,7 +130,7 @@ const withSiriIntentModule = (config) => {
         
         // 6. Create entitlements file for the extension
         const entitlementsPath = path.join(destDir, `${targetName}.entitlements`);
-        const relEntitlementsPath = path.relative(path.join(projectRoot, 'ios'), entitlementsPath);
+        const relEntitlementsPath = `${targetName}.entitlements`;//path.relative(path.join(projectRoot, 'ios'), entitlementsPath);
 
 
         const entitlementsContent = `
