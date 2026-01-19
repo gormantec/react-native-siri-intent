@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   # 2. CRITICAL: Exclude the Extension folder completely.
   # This prevents CocoaPods from adding the @main file to the app target.
-  s.exclude_files  = "ios/SiriExtension/**/*"
+  s.exclude_files  = "ios/SimpleHealthSiriIntent/**/*"
   
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
