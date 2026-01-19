@@ -34,7 +34,7 @@ const withSiriIntentModule = (config) => {
     console.info(`[SiriExtension] withXcodeProject() project:${project} appName:${appName}`);
 
     // A. Define Paths
-    const sourceDir = path.join(projectRoot, 'node_modules', 'react-native-siri-intent', 'ios', 'SiriExtension');
+    const sourceDir = path.join(projectRoot, 'node_modules', 'react-native-siri-intent', 'ios', EXTENSION_NAME);
     const destDir = path.join(projectRoot, 'ios', EXTENSION_NAME);
 
     // B. Copy Extension Files to ios/ project folder
