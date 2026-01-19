@@ -89,6 +89,15 @@ const withSiriIntentModule = (config) => {
 
         filesToCopy.forEach(file => {
             const filePath = path.join(destDir, file);
+
+            // Check if file is already in the Xcode project
+            const fileAlreadyExists = Object.values(project.pbxFileReferenceSection())
+              .some(ref => ref && ref.path === file);
+
+            if (fileAlreadyExists) {
+              console.info(`[SiriExtension] File already exists in Xcode project: ${file}`);
+              return;
+            }
          
             // Log file stats and permissions
             try {
