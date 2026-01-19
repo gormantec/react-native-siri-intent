@@ -68,10 +68,13 @@ const withSiriIntentModule = (config) => {
         console.info(`[SiriExtension] Creating new App Extension Target: ${targetName}`);
         
         // 1. Add the Target
+        console.info(`[SiriExtension] ************ addTarget(${targetName})`);
         target = project.addTarget(targetName, 'app_extension', targetName, bundleId);
   
         
         // 2. Create a PBXGroup for the extension files
+
+        console.info(`[SiriExtension] ************ addPbxGroup([],${targetName})`);
         const pbxGroup = project.addPbxGroup([], targetName, targetName);
         const mainGroupKey = project.getFirstProject().firstProject.mainGroup;
 
@@ -106,11 +109,13 @@ const withSiriIntentModule = (config) => {
               console.warn(`[SiriExtension] statSync error for ${filePath}:`, err);
             }
             if (fs.existsSync(filePath) && typeof file === 'string') {
-              console.info(`[SiriExtension] (92) project.addFile(path=${file}, pbxGroup.uuid=${pbxGroup.uuid})`);
+              console.info(`[SiriExtension] ************ addFile(path=${file}, pbxGroup.uuid=${pbxGroup.uuid})`);
               const fileRef = project.addFile(file, pbxGroup.uuid);
               if (fileRef) {
                   // Depending on your xcode library version, it might be fileRef.uuid or fileRef.fileRef
+                
                   const actualUuid = fileRef.uuid || fileRef.fileRef; 
+                  console.info(`[SiriExtension] ************ added(path=${file}, actualUuid=${actualUuid})`);
                   
                   if (file.endsWith('.swift')) {
                       sourceFiles.push(actualUuid);
@@ -166,10 +171,18 @@ const withSiriIntentModule = (config) => {
 `;
         fs.writeFileSync(entitlementsPath, entitlementsContent.trim());
         if (fs.existsSync(entitlementsPath) && typeof entitlementsPath === 'string') {
-          console.info(`[SiriExtension] (146) project.addFile(path=${entitlementsFilename}, pbxGroup.uuid=${pbxGroup.uuid})`);
-          const entFileRef = project.addFile(entitlementsFilename, pbxGroup.uuid);
-          if (entFileRef) {
+          // Check if entitlements file is already in the Xcode project
+          const entAlreadyExists = Object.values(project.pbxFileReferenceSection())
+            .some(ref => ref && ref.path === entitlementsFilename);
+
+          if (entAlreadyExists) {
+            console.info(`[SiriExtension] Entitlements file already exists in Xcode project: ${entitlementsFilename}`);
+          } else {
+            console.info(`[SiriExtension] ************ addEntitlement(path=${entitlementsFilename}, pbxGroup.uuid=${pbxGroup.uuid})`);
+            const entFileRef = project.addFile(entitlementsFilename, pbxGroup.uuid);
+            if (entFileRef) {
               resourceFiles.push(entFileRef.uuid || entFileRef.fileRef);
+            }
           }
         } else {
           console.warn(`[SiriExtension] Entitlements file does not exist or path invalid file: ${entitlementsFilename}`);
