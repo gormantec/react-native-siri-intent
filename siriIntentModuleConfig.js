@@ -94,8 +94,12 @@ const withSiriIntentModule = (config) => {
             const filePath = path.join(destDir, file);
 
             // Check if file is already in the Xcode project
-            const fileAlreadyExists = Object.values(project.pbxFileReferenceSection())
-              .some(ref => ref && ref.path === file);
+          const fileAlreadyExists = Object.values(project.pbxFileReferenceSection())
+            .some(ref => {
+              if (!ref) return false;
+              // Check for both file name and any UUID-style path
+              return ref.path === file || ref.name === file || ref.path === filePath || ref.name === filePath;
+            });
 
             if (fileAlreadyExists) {
               console.info(`[SiriExtension] File already exists in Xcode project: ${file}`);
