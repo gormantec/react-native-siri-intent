@@ -177,8 +177,10 @@ const withSiriIntentModule = (config) => {
         fs.writeFileSync(entitlementsPath, entitlementsContent.trim());
         if (fs.existsSync(entitlementsPath) && typeof entitlementsPath === 'string') {
           // Check if entitlements file is already in the Xcode project
-          const entAlreadyExists = Object.values(project.pbxFileReferenceSection())
-            .some(ref => ref && ref.path === entitlementsFilename);
+          const entAlreadyExists = Object.values(project.pbxFileReferenceSection()).some(ref => {
+              console.info(`[SiriExtension] Checking existing entitlements file ref:`, ref);
+              return ref && ref.path === entitlementsFilename;
+        });
 
           if (entAlreadyExists) {
             console.info(`[SiriExtension] Entitlements file already exists in Xcode project: ${entitlementsFilename}`);
