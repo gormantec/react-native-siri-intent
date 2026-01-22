@@ -101,7 +101,8 @@ const withSiriIntentModule = (config) => {
                 console.info(`[SiriExtension]  - ${ref.name} (${ref.sourceTree}/${ref.path})`);
                 if (!ref) return false;
                 // Check for both file name and any UUID-style path
-                return ref.path === file || ref.name === file || ref.path === filePath || ref.name === filePath;
+                const relPath = path.join(EXTENSION_NAME, file); 
+                return ref.path === relPath;
               });
 
             console.info(`[SiriExtension] fileAlreadyExists for ${file}:`, fileAlreadyExists);
@@ -121,7 +122,8 @@ const withSiriIntentModule = (config) => {
 
             if (fs.existsSync(filePath) && typeof file === 'string') {
               console.info(`[SiriExtension] addFile(path=${file}, pbxGroup.uuid=${pbxGroup.uuid})`);
-              const fileRef = project.addFile(file, pbxGroup.uuid);
+              const relPath = path.join(EXTENSION_NAME, file); 
+              const fileRef = project.addFile(relPath, pbxGroup.uuid);
 
               // Log the current PBXFileReferenceSection
               console.info(`[SiriExtension] after add file list projectfiles:`);
@@ -194,14 +196,16 @@ const withSiriIntentModule = (config) => {
           console.info(`[SiriExtension] before adding entitlements list project files:`);
           const entAlreadyExists = Object.values(project.pbxFileReferenceSection()).some(ref => {
               console.info(`[SiriExtension]  - ${ref.name} (${ref.path})`);
-              return ref && ref.path === entitlementsFilename;
+              const relPath = path.join(EXTENSION_NAME, entitlementsFilename); 
+              return ref && ref.path === relPath;
         });
 
           if (entAlreadyExists) {
             console.info(`[SiriExtension] Entitlements file already exists in Xcode project: ${entitlementsFilename}`);
           } else {
             console.info(`[SiriExtension] addEntitlement(path=${entitlementsFilename}, pbxGroup.uuid=${pbxGroup.uuid})`);
-            const entFileRef = project.addFile(entitlementsFilename, pbxGroup.uuid);
+            const relPath = path.join(EXTENSION_NAME, entitlementsFilename); 
+            const entFileRef = project.addFile(relPath, pbxGroup.uuid);
             if (entFileRef) {
               resourceFiles.push(entFileRef.uuid || entFileRef.fileRef);
             }

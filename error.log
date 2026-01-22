@@ -12,612 +12,147 @@
 [SiriExtension] Creating new App Extension Target: SimpleHealthSiriIntent
 [SiriExtension] ************ addTarget(SimpleHealthSiriIntent)
 [SiriExtension] ************ addPbxGroup([],SimpleHealthSiriIntent)
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  explicitFileType: 'wrapper.application',
-  includeInIndex: 0,
-  path: 'SimpleHealthPlan.app',
-  sourceTree: 'BUILT_PRODUCTS_DIR'
-}
-[SiriExtension] Checking existing file ref: SimpleHealthPlan.app
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'folder.assetcatalog',
-  name: 'Images.xcassets',
-  path: 'SimpleHealthPlan/Images.xcassets',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: Images.xcassets
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  fileEncoding: 4,
-  lastKnownFileType: 'text.plist.xml',
-  name: 'Info.plist',
-  path: 'SimpleHealthPlan/Info.plist',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: Info.plist
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  fileEncoding: 4,
-  lastKnownFileType: 'file.storyboard',
-  name: 'SplashScreen.storyboard',
-  path: 'SimpleHealthPlan/SplashScreen.storyboard',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: SplashScreen.storyboard
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  fileEncoding: 4,
-  lastKnownFileType: 'text.plist.xml',
-  path: 'Expo.plist',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: Expo.plist
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'wrapper.framework',
-  name: 'JavaScriptCore.framework',
-  path: 'System/Library/Frameworks/JavaScriptCore.framework',
-  sourceTree: 'SDKROOT'
-}
-[SiriExtension] Checking existing file ref: JavaScriptCore.framework
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'sourcecode.swift',
-  name: 'AppDelegate.swift',
-  path: 'SimpleHealthPlan/AppDelegate.swift',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: AppDelegate.swift
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'sourcecode.c.h',
-  name: '"SimpleHealthPlan-Bridging-Header.h"',
-  path: '"SimpleHealthPlan/SimpleHealthPlan-Bridging-Header.h"',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: SimpleHealthPlan-Bridging-Header.h
-[SiriExtension] Checking existing file ref: {
-  isa: 'PBXFileReference',
-  name: '"SimpleHealthSiriIntent.appex"',
-  path: '"SimpleHealthSiriIntent.appex"',
-  sourceTree: 'BUILT_PRODUCTS_DIR',
-  fileEncoding: undefined,
-  lastKnownFileType: undefined,
-  explicitFileType: '"wrapper.app-extension"',
-  includeInIndex: 0
-}
-[SiriExtension] Checking existing file ref: SimpleHealthSiriIntent.appex
+[SiriExtension] before adding source list projectfiles:
+[SiriExtension]  - undefined (BUILT_PRODUCTS_DIR/SimpleHealthPlan.app)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - Images.xcassets ("<group>"/SimpleHealthPlan/Images.xcassets)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - Info.plist ("<group>"/SimpleHealthPlan/Info.plist)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - SplashScreen.storyboard ("<group>"/SimpleHealthPlan/SplashScreen.storyboard)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - undefined ("<group>"/Expo.plist)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - JavaScriptCore.framework (SDKROOT/System/Library/Frameworks/JavaScriptCore.framework)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - AppDelegate.swift ("<group>"/SimpleHealthPlan/AppDelegate.swift)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthPlan-Bridging-Header.h" ("<group>"/"SimpleHealthPlan/SimpleHealthPlan-Bridging-Header.h")
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthSiriIntent.appex" (BUILT_PRODUCTS_DIR/"SimpleHealthSiriIntent.appex")
+[SiriExtension]  - undefined (undefined/undefined)
 [SiriExtension] fileAlreadyExists for SimpleHealthSiriIntentExtension.swift: false
-[SiriExtension] statSync for /home/craig/code/react_builds/simplehealth/ios/SimpleHealthSiriIntent/SimpleHealthSiriIntentExtension.swift: Stats {
-  dev: 2051,
-  mode: 33204,
-  nlink: 1,
-  uid: 1000,
-  gid: 1000,
-  rdev: 0,
-  blksize: 4096,
-  ino: 10526331,
-  size: 203,
-  blocks: 8,
-  atimeMs: 1769080173744.7212,
-  mtimeMs: 1769080176715.8865,
-  ctimeMs: 1769080176715.8865,
-  birthtimeMs: 1769080176714.7273,
-  atime: 2026-01-22T11:09:33.745Z,
-  mtime: 2026-01-22T11:09:36.716Z,
-  ctime: 2026-01-22T11:09:36.716Z,
-  birthtime: 2026-01-22T11:09:36.715Z
-}
-[SiriExtension] ************ addFile(path=SimpleHealthSiriIntentExtension.swift, pbxGroup.uuid=322457C032DC4EFF87C9EFF9)
-[SiriExtension] addFile returned: pbxFile {
-  basename: 'SimpleHealthSiriIntentExtension.swift',
-  lastKnownFileType: 'sourcecode.swift',
-  group: 'Sources',
-  path: 'SimpleHealthSiriIntentExtension.swift',
-  defaultEncoding: 4,
-  fileEncoding: 4,
-  sourceTree: '"<group>"',
-  includeInIndex: 0,
-  fileRef: '6B26F3DD77494722BF7EC2FE'
-}
-[SiriExtension] PBXFileReferenceSection after addFile: [Object: null prototype] {
-  '13B07F961A680F5B00A75B9A': [Object: null prototype] {
-    isa: 'PBXFileReference',
-    explicitFileType: 'wrapper.application',
-    includeInIndex: 0,
-    path: 'SimpleHealthPlan.app',
-    sourceTree: 'BUILT_PRODUCTS_DIR'
-  },
-  '13B07F961A680F5B00A75B9A_comment': 'SimpleHealthPlan.app',
-  '13B07FB51A68108700A75B9A': [Object: null prototype] {
-    isa: 'PBXFileReference',
-    lastKnownFileType: 'folder.assetcatalog',
-    name: 'Images.xcassets',
-    path: 'SimpleHealthPlan/Images.xcassets',
-    sourceTree: '"<group>"'
-  },
-  '13B07FB51A68108700A75B9A_comment': 'Images.xcassets',
-  '13B07FB61A68108700A75B9A': [Object: null prototype] {
-    isa: 'PBXFileReference',
-    fileEncoding: 4,
-    lastKnownFileType: 'text.plist.xml',
-    name: 'Info.plist',
-    path: 'SimpleHealthPlan/Info.plist',
-    sourceTree: '"<group>"'
-  },
-  '13B07FB61A68108700A75B9A_comment': 'Info.plist',
-  AA286B85B6C04FC6940260E9: [Object: null prototype] {
-    isa: 'PBXFileReference',
-    fileEncoding: 4,
-    lastKnownFileType: 'file.storyboard',
-    name: 'SplashScreen.storyboard',
-    path: 'SimpleHealthPlan/SplashScreen.storyboard',
-    sourceTree: '"<group>"'
-  },
-  AA286B85B6C04FC6940260E9_comment: 'SplashScreen.storyboard',
-  BB2F792C24A3F905000567C9: [Object: null prototype] {
-    isa: 'PBXFileReference',
-    fileEncoding: 4,
-    lastKnownFileType: 'text.plist.xml',
-    path: 'Expo.plist',
-    sourceTree: '"<group>"'
-  },
-  BB2F792C24A3F905000567C9_comment: 'Expo.plist',
-  ED297162215061F000B7C4FE: [Object: null prototype] {
-    isa: 'PBXFileReference',
-    lastKnownFileType: 'wrapper.framework',
-    name: 'JavaScriptCore.framework',
-    path: 'System/Library/Frameworks/JavaScriptCore.framework',
-    sourceTree: 'SDKROOT'
-  },
-  ED297162215061F000B7C4FE_comment: 'JavaScriptCore.framework',
-  F11748412D0307B40044C1D9: [Object: null prototype] {
-    isa: 'PBXFileReference',
-    lastKnownFileType: 'sourcecode.swift',
-    name: 'AppDelegate.swift',
-    path: 'SimpleHealthPlan/AppDelegate.swift',
-    sourceTree: '"<group>"'
-  },
-  F11748412D0307B40044C1D9_comment: 'AppDelegate.swift',
-  F11748442D0722820044C1D9: [Object: null prototype] {
-    isa: 'PBXFileReference',
-    lastKnownFileType: 'sourcecode.c.h',
-    name: '"SimpleHealthPlan-Bridging-Header.h"',
-    path: '"SimpleHealthPlan/SimpleHealthPlan-Bridging-Header.h"',
-    sourceTree: '"<group>"'
-  },
-  F11748442D0722820044C1D9_comment: 'SimpleHealthPlan-Bridging-Header.h',
-  '02AE1A2CC3BA447E9C84A437': {
-    isa: 'PBXFileReference',
-    name: '"SimpleHealthSiriIntent.appex"',
-    path: '"SimpleHealthSiriIntent.appex"',
-    sourceTree: 'BUILT_PRODUCTS_DIR',
-    fileEncoding: undefined,
-    lastKnownFileType: undefined,
-    explicitFileType: '"wrapper.app-extension"',
-    includeInIndex: 0
-  },
-  '02AE1A2CC3BA447E9C84A437_comment': 'SimpleHealthSiriIntent.appex',
-  '6B26F3DD77494722BF7EC2FE': {
-    isa: 'PBXFileReference',
-    name: '"SimpleHealthSiriIntentExtension.swift"',
-    path: '"SimpleHealthSiriIntentExtension.swift"',
-    sourceTree: '"<group>"',
-    fileEncoding: 4,
-    lastKnownFileType: 'sourcecode.swift',
-    explicitFileType: undefined,
-    includeInIndex: 0
-  },
-  '6B26F3DD77494722BF7EC2FE_comment': 'SimpleHealthSiriIntentExtension.swift'
-}
+[SiriExtension] statSync for /home/craig/code/react_builds/simplehealth/ios/SimpleHealthSiriIntent/SimpleHealthSiriIntentExtension.swift
+[SiriExtension] addFile(path=SimpleHealthSiriIntentExtension.swift, pbxGroup.uuid=8FD90643A3AE4E11997BC094)
+[SiriExtension] after add file list projectfiles:
+[SiriExtension]  - undefined (BUILT_PRODUCTS_DIR/SimpleHealthPlan.app)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - Images.xcassets ("<group>"/SimpleHealthPlan/Images.xcassets)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - Info.plist ("<group>"/SimpleHealthPlan/Info.plist)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - SplashScreen.storyboard ("<group>"/SimpleHealthPlan/SplashScreen.storyboard)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - undefined ("<group>"/Expo.plist)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - JavaScriptCore.framework (SDKROOT/System/Library/Frameworks/JavaScriptCore.framework)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - AppDelegate.swift ("<group>"/SimpleHealthPlan/AppDelegate.swift)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthPlan-Bridging-Header.h" ("<group>"/"SimpleHealthPlan/SimpleHealthPlan-Bridging-Header.h")
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthSiriIntent.appex" (BUILT_PRODUCTS_DIR/"SimpleHealthSiriIntent.appex")
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthSiriIntentExtension.swift" ("<group>"/"SimpleHealthSiriIntentExtension.swift")
+[SiriExtension]  - undefined (undefined/undefined)
 [SiriExtension] fileRef.uuid undefined
-[SiriExtension] fileRef.fileRef 6B26F3DD77494722BF7EC2FE
-[SiriExtension] ************ added(path=SimpleHealthSiriIntentExtension.swift, actualUuid=6B26F3DD77494722BF7EC2FE)
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  explicitFileType: 'wrapper.application',
-  includeInIndex: 0,
-  path: 'SimpleHealthPlan.app',
-  sourceTree: 'BUILT_PRODUCTS_DIR'
-}
-[SiriExtension] Checking existing file ref: SimpleHealthPlan.app
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'folder.assetcatalog',
-  name: 'Images.xcassets',
-  path: 'SimpleHealthPlan/Images.xcassets',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: Images.xcassets
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  fileEncoding: 4,
-  lastKnownFileType: 'text.plist.xml',
-  name: 'Info.plist',
-  path: 'SimpleHealthPlan/Info.plist',
-  sourceTree: '"<group>"'
-}
+[SiriExtension] fileRef.fileRef 5925A82DD11F442681A102CD
+[SiriExtension] ************ added(path=SimpleHealthSiriIntentExtension.swift, actualUuid=5925A82DD11F442681A102CD)
+[SiriExtension] before adding source list projectfiles:
+[SiriExtension]  - undefined (BUILT_PRODUCTS_DIR/SimpleHealthPlan.app)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - Images.xcassets ("<group>"/SimpleHealthPlan/Images.xcassets)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - Info.plist ("<group>"/SimpleHealthPlan/Info.plist)
 [SiriExtension] fileAlreadyExists for Info.plist: true
 [SiriExtension] File already exists in Xcode project: Info.plist
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  explicitFileType: 'wrapper.application',
-  includeInIndex: 0,
-  path: 'SimpleHealthPlan.app',
-  sourceTree: 'BUILT_PRODUCTS_DIR'
-}
-[SiriExtension] Checking existing file ref: SimpleHealthPlan.app
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'folder.assetcatalog',
-  name: 'Images.xcassets',
-  path: 'SimpleHealthPlan/Images.xcassets',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: Images.xcassets
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  fileEncoding: 4,
-  lastKnownFileType: 'text.plist.xml',
-  name: 'Info.plist',
-  path: 'SimpleHealthPlan/Info.plist',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: Info.plist
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  fileEncoding: 4,
-  lastKnownFileType: 'file.storyboard',
-  name: 'SplashScreen.storyboard',
-  path: 'SimpleHealthPlan/SplashScreen.storyboard',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: SplashScreen.storyboard
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  fileEncoding: 4,
-  lastKnownFileType: 'text.plist.xml',
-  path: 'Expo.plist',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: Expo.plist
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'wrapper.framework',
-  name: 'JavaScriptCore.framework',
-  path: 'System/Library/Frameworks/JavaScriptCore.framework',
-  sourceTree: 'SDKROOT'
-}
-[SiriExtension] Checking existing file ref: JavaScriptCore.framework
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'sourcecode.swift',
-  name: 'AppDelegate.swift',
-  path: 'SimpleHealthPlan/AppDelegate.swift',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: AppDelegate.swift
-[SiriExtension] Checking existing file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'sourcecode.c.h',
-  name: '"SimpleHealthPlan-Bridging-Header.h"',
-  path: '"SimpleHealthPlan/SimpleHealthPlan-Bridging-Header.h"',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing file ref: SimpleHealthPlan-Bridging-Header.h
-[SiriExtension] Checking existing file ref: {
-  isa: 'PBXFileReference',
-  name: '"SimpleHealthSiriIntent.appex"',
-  path: '"SimpleHealthSiriIntent.appex"',
-  sourceTree: 'BUILT_PRODUCTS_DIR',
-  fileEncoding: undefined,
-  lastKnownFileType: undefined,
-  explicitFileType: '"wrapper.app-extension"',
-  includeInIndex: 0
-}
-[SiriExtension] Checking existing file ref: SimpleHealthSiriIntent.appex
-[SiriExtension] Checking existing file ref: {
-  isa: 'PBXFileReference',
-  name: '"SimpleHealthSiriIntentExtension.swift"',
-  path: '"SimpleHealthSiriIntentExtension.swift"',
-  sourceTree: '"<group>"',
-  fileEncoding: 4,
-  lastKnownFileType: 'sourcecode.swift',
-  explicitFileType: undefined,
-  includeInIndex: 0
-}
-[SiriExtension] Checking existing file ref: SimpleHealthSiriIntentExtension.swift
+[SiriExtension] before adding source list projectfiles:
+[SiriExtension]  - undefined (BUILT_PRODUCTS_DIR/SimpleHealthPlan.app)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - Images.xcassets ("<group>"/SimpleHealthPlan/Images.xcassets)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - Info.plist ("<group>"/SimpleHealthPlan/Info.plist)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - SplashScreen.storyboard ("<group>"/SimpleHealthPlan/SplashScreen.storyboard)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - undefined ("<group>"/Expo.plist)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - JavaScriptCore.framework (SDKROOT/System/Library/Frameworks/JavaScriptCore.framework)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - AppDelegate.swift ("<group>"/SimpleHealthPlan/AppDelegate.swift)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthPlan-Bridging-Header.h" ("<group>"/"SimpleHealthPlan/SimpleHealthPlan-Bridging-Header.h")
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthSiriIntent.appex" (BUILT_PRODUCTS_DIR/"SimpleHealthSiriIntent.appex")
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthSiriIntentExtension.swift" ("<group>"/"SimpleHealthSiriIntentExtension.swift")
+[SiriExtension]  - undefined (undefined/undefined)
 [SiriExtension] fileAlreadyExists for SiriIntent.swift: false
-[SiriExtension] statSync for /home/craig/code/react_builds/simplehealth/ios/SimpleHealthSiriIntent/SiriIntent.swift: Stats {
-  dev: 2051,
-  mode: 33204,
-  nlink: 1,
-  uid: 1000,
-  gid: 1000,
-  rdev: 0,
-  blksize: 4096,
-  ino: 10526338,
-  size: 1572,
-  blocks: 8,
-  atimeMs: 1769080173744.7212,
-  mtimeMs: 1769080176856.7485,
-  ctimeMs: 1769080176856.7485,
-  birthtimeMs: 1769080176855.7275,
-  atime: 2026-01-22T11:09:33.745Z,
-  mtime: 2026-01-22T11:09:36.857Z,
-  ctime: 2026-01-22T11:09:36.857Z,
-  birthtime: 2026-01-22T11:09:36.856Z
-}
-[SiriExtension] ************ addFile(path=SiriIntent.swift, pbxGroup.uuid=322457C032DC4EFF87C9EFF9)
-[SiriExtension] addFile returned: pbxFile {
-  basename: 'SiriIntent.swift',
-  lastKnownFileType: 'sourcecode.swift',
-  group: 'Sources',
-  path: 'SiriIntent.swift',
-  defaultEncoding: 4,
-  fileEncoding: 4,
-  sourceTree: '"<group>"',
-  includeInIndex: 0,
-  fileRef: '122AB5D5B5D34A45AC5C7CE2'
-}
-[SiriExtension] PBXFileReferenceSection after addFile: [Object: null prototype] {
-  '13B07F961A680F5B00A75B9A': [Object: null prototype] {
-    isa: 'PBXFileReference',
-    explicitFileType: 'wrapper.application',
-    includeInIndex: 0,
-    path: 'SimpleHealthPlan.app',
-    sourceTree: 'BUILT_PRODUCTS_DIR'
-  },
-  '13B07F961A680F5B00A75B9A_comment': 'SimpleHealthPlan.app',
-  '13B07FB51A68108700A75B9A': [Object: null prototype] {
-    isa: 'PBXFileReference',
-    lastKnownFileType: 'folder.assetcatalog',
-    name: 'Images.xcassets',
-    path: 'SimpleHealthPlan/Images.xcassets',
-    sourceTree: '"<group>"'
-  },
-  '13B07FB51A68108700A75B9A_comment': 'Images.xcassets',
-  '13B07FB61A68108700A75B9A': [Object: null prototype] {
-    isa: 'PBXFileReference',
-    fileEncoding: 4,
-    lastKnownFileType: 'text.plist.xml',
-    name: 'Info.plist',
-    path: 'SimpleHealthPlan/Info.plist',
-    sourceTree: '"<group>"'
-  },
-  '13B07FB61A68108700A75B9A_comment': 'Info.plist',
-  AA286B85B6C04FC6940260E9: [Object: null prototype] {
-    isa: 'PBXFileReference',
-    fileEncoding: 4,
-    lastKnownFileType: 'file.storyboard',
-    name: 'SplashScreen.storyboard',
-    path: 'SimpleHealthPlan/SplashScreen.storyboard',
-    sourceTree: '"<group>"'
-  },
-  AA286B85B6C04FC6940260E9_comment: 'SplashScreen.storyboard',
-  BB2F792C24A3F905000567C9: [Object: null prototype] {
-    isa: 'PBXFileReference',
-    fileEncoding: 4,
-    lastKnownFileType: 'text.plist.xml',
-    path: 'Expo.plist',
-    sourceTree: '"<group>"'
-  },
-  BB2F792C24A3F905000567C9_comment: 'Expo.plist',
-  ED297162215061F000B7C4FE: [Object: null prototype] {
-    isa: 'PBXFileReference',
-    lastKnownFileType: 'wrapper.framework',
-    name: 'JavaScriptCore.framework',
-    path: 'System/Library/Frameworks/JavaScriptCore.framework',
-    sourceTree: 'SDKROOT'
-  },
-  ED297162215061F000B7C4FE_comment: 'JavaScriptCore.framework',
-  F11748412D0307B40044C1D9: [Object: null prototype] {
-    isa: 'PBXFileReference',
-    lastKnownFileType: 'sourcecode.swift',
-    name: 'AppDelegate.swift',
-    path: 'SimpleHealthPlan/AppDelegate.swift',
-    sourceTree: '"<group>"'
-  },
-  F11748412D0307B40044C1D9_comment: 'AppDelegate.swift',
-  F11748442D0722820044C1D9: [Object: null prototype] {
-    isa: 'PBXFileReference',
-    lastKnownFileType: 'sourcecode.c.h',
-    name: '"SimpleHealthPlan-Bridging-Header.h"',
-    path: '"SimpleHealthPlan/SimpleHealthPlan-Bridging-Header.h"',
-    sourceTree: '"<group>"'
-  },
-  F11748442D0722820044C1D9_comment: 'SimpleHealthPlan-Bridging-Header.h',
-  '02AE1A2CC3BA447E9C84A437': {
-    isa: 'PBXFileReference',
-    name: '"SimpleHealthSiriIntent.appex"',
-    path: '"SimpleHealthSiriIntent.appex"',
-    sourceTree: 'BUILT_PRODUCTS_DIR',
-    fileEncoding: undefined,
-    lastKnownFileType: undefined,
-    explicitFileType: '"wrapper.app-extension"',
-    includeInIndex: 0
-  },
-  '02AE1A2CC3BA447E9C84A437_comment': 'SimpleHealthSiriIntent.appex',
-  '6B26F3DD77494722BF7EC2FE': {
-    isa: 'PBXFileReference',
-    name: '"SimpleHealthSiriIntentExtension.swift"',
-    path: '"SimpleHealthSiriIntentExtension.swift"',
-    sourceTree: '"<group>"',
-    fileEncoding: 4,
-    lastKnownFileType: 'sourcecode.swift',
-    explicitFileType: undefined,
-    includeInIndex: 0
-  },
-  '6B26F3DD77494722BF7EC2FE_comment': 'SimpleHealthSiriIntentExtension.swift',
-  '122AB5D5B5D34A45AC5C7CE2': {
-    isa: 'PBXFileReference',
-    name: '"SiriIntent.swift"',
-    path: '"SiriIntent.swift"',
-    sourceTree: '"<group>"',
-    fileEncoding: 4,
-    lastKnownFileType: 'sourcecode.swift',
-    explicitFileType: undefined,
-    includeInIndex: 0
-  },
-  '122AB5D5B5D34A45AC5C7CE2_comment': 'SiriIntent.swift'
-}
+[SiriExtension] statSync for /home/craig/code/react_builds/simplehealth/ios/SimpleHealthSiriIntent/SiriIntent.swift
+[SiriExtension] addFile(path=SiriIntent.swift, pbxGroup.uuid=8FD90643A3AE4E11997BC094)
+[SiriExtension] after add file list projectfiles:
+[SiriExtension]  - undefined (BUILT_PRODUCTS_DIR/SimpleHealthPlan.app)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - Images.xcassets ("<group>"/SimpleHealthPlan/Images.xcassets)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - Info.plist ("<group>"/SimpleHealthPlan/Info.plist)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - SplashScreen.storyboard ("<group>"/SimpleHealthPlan/SplashScreen.storyboard)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - undefined ("<group>"/Expo.plist)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - JavaScriptCore.framework (SDKROOT/System/Library/Frameworks/JavaScriptCore.framework)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - AppDelegate.swift ("<group>"/SimpleHealthPlan/AppDelegate.swift)
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthPlan-Bridging-Header.h" ("<group>"/"SimpleHealthPlan/SimpleHealthPlan-Bridging-Header.h")
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthSiriIntent.appex" (BUILT_PRODUCTS_DIR/"SimpleHealthSiriIntent.appex")
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SimpleHealthSiriIntentExtension.swift" ("<group>"/"SimpleHealthSiriIntentExtension.swift")
+[SiriExtension]  - undefined (undefined/undefined)
+[SiriExtension]  - "SiriIntent.swift" ("<group>"/"SiriIntent.swift")
+[SiriExtension]  - undefined (undefined/undefined)
 [SiriExtension] fileRef.uuid undefined
-[SiriExtension] fileRef.fileRef 122AB5D5B5D34A45AC5C7CE2
-[SiriExtension] ************ added(path=SiriIntent.swift, actualUuid=122AB5D5B5D34A45AC5C7CE2)
-[SiriExtension] sourceFiles: [ '6B26F3DD77494722BF7EC2FE', '122AB5D5B5D34A45AC5C7CE2' ]
+[SiriExtension] fileRef.fileRef 02D244AAED2F41938084A8D7
+[SiriExtension] ************ added(path=SiriIntent.swift, actualUuid=02D244AAED2F41938084A8D7)
+[SiriExtension] sourceFiles: [ '5925A82DD11F442681A102CD', '02D244AAED2F41938084A8D7' ]
 [SiriExtension] resourceFiles: []
 [SiriExtension] Updating build settings for: "SimpleHealthSiriIntent"
 [SiriExtension] Updating build settings for: "SimpleHealthSiriIntent"
-[SiriExtension] Checking existing entitlements file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  explicitFileType: 'wrapper.application',
-  includeInIndex: 0,
-  path: 'SimpleHealthPlan.app',
-  sourceTree: 'BUILT_PRODUCTS_DIR'
-}
-[SiriExtension] Checking existing entitlements file ref: SimpleHealthPlan.app
-[SiriExtension] Checking existing entitlements file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'folder.assetcatalog',
-  name: 'Images.xcassets',
-  path: 'SimpleHealthPlan/Images.xcassets',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing entitlements file ref: Images.xcassets
-[SiriExtension] Checking existing entitlements file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  fileEncoding: 4,
-  lastKnownFileType: 'text.plist.xml',
-  name: 'Info.plist',
-  path: 'SimpleHealthPlan/Info.plist',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing entitlements file ref: Info.plist
-[SiriExtension] Checking existing entitlements file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  fileEncoding: 4,
-  lastKnownFileType: 'file.storyboard',
-  name: 'SplashScreen.storyboard',
-  path: 'SimpleHealthPlan/SplashScreen.storyboard',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing entitlements file ref: SplashScreen.storyboard
-[SiriExtension] Checking existing entitlements file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  fileEncoding: 4,
-  lastKnownFileType: 'text.plist.xml',
-  path: 'Expo.plist',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing entitlements file ref: Expo.plist
-[SiriExtension] Checking existing entitlements file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'wrapper.framework',
-  name: 'JavaScriptCore.framework',
-  path: 'System/Library/Frameworks/JavaScriptCore.framework',
-  sourceTree: 'SDKROOT'
-}
-[SiriExtension] Checking existing entitlements file ref: JavaScriptCore.framework
-[SiriExtension] Checking existing entitlements file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'sourcecode.swift',
-  name: 'AppDelegate.swift',
-  path: 'SimpleHealthPlan/AppDelegate.swift',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing entitlements file ref: AppDelegate.swift
-[SiriExtension] Checking existing entitlements file ref: [Object: null prototype] {
-  isa: 'PBXFileReference',
-  lastKnownFileType: 'sourcecode.c.h',
-  name: '"SimpleHealthPlan-Bridging-Header.h"',
-  path: '"SimpleHealthPlan/SimpleHealthPlan-Bridging-Header.h"',
-  sourceTree: '"<group>"'
-}
-[SiriExtension] Checking existing entitlements file ref: SimpleHealthPlan-Bridging-Header.h
-[SiriExtension] Checking existing entitlements file ref: {
-  isa: 'PBXFileReference',
-  name: '"SimpleHealthSiriIntent.appex"',
-  path: '"SimpleHealthSiriIntent.appex"',
-  sourceTree: 'BUILT_PRODUCTS_DIR',
-  fileEncoding: undefined,
-  lastKnownFileType: undefined,
-  explicitFileType: '"wrapper.app-extension"',
-  includeInIndex: 0
-}
-[SiriExtension] Checking existing entitlements file ref: SimpleHealthSiriIntent.appex
-[SiriExtension] Checking existing entitlements file ref: {
-  isa: 'PBXFileReference',
-  name: '"SimpleHealthSiriIntentExtension.swift"',
-  path: '"SimpleHealthSiriIntentExtension.swift"',
-  sourceTree: '"<group>"',
-  fileEncoding: 4,
-  lastKnownFileType: 'sourcecode.swift',
-  explicitFileType: undefined,
-  includeInIndex: 0
-}
-[SiriExtension] Checking existing entitlements file ref: SimpleHealthSiriIntentExtension.swift
-[SiriExtension] Checking existing entitlements file ref: {
-  isa: 'PBXFileReference',
-  name: '"SiriIntent.swift"',
-  path: '"SiriIntent.swift"',
-  sourceTree: '"<group>"',
-  fileEncoding: 4,
-  lastKnownFileType: 'sourcecode.swift',
-  explicitFileType: undefined,
-  includeInIndex: 0
-}
-[SiriExtension] Checking existing entitlements file ref: SiriIntent.swift
-[SiriExtension] Checking existing entitlements file ref: {
-  isa: 'PBXFileReference',
-  name: '"6B26F3DD77494722BF7EC2FE"',
-  path: '"6B26F3DD77494722BF7EC2FE"',
-  sourceTree: '"<group>"',
-  fileEncoding: undefined,
-  lastKnownFileType: 'unknown',
-  explicitFileType: undefined,
-  includeInIndex: 0
-}
-[SiriExtension] Checking existing entitlements file ref: 6B26F3DD77494722BF7EC2FE
-[SiriExtension] Checking existing entitlements file ref: {
-  isa: 'PBXFileReference',
-  name: '"122AB5D5B5D34A45AC5C7CE2"',
-  path: '"122AB5D5B5D34A45AC5C7CE2"',
-  sourceTree: '"<group>"',
-  fileEncoding: undefined,
-  lastKnownFileType: 'unknown',
-  explicitFileType: undefined,
-  includeInIndex: 0
-}
-[SiriExtension] Checking existing entitlements file ref: 122AB5D5B5D34A45AC5C7CE2
-[SiriExtension] ************ addEntitlement(path=SimpleHealthSiriIntent.entitlements, pbxGroup.uuid=322457C032DC4EFF87C9EFF9)
+[SiriExtension] before adding entitlements list project files:
+[SiriExtension]  - undefined (SimpleHealthPlan.app)
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - Images.xcassets (SimpleHealthPlan/Images.xcassets)
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - Info.plist (SimpleHealthPlan/Info.plist)
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - SplashScreen.storyboard (SimpleHealthPlan/SplashScreen.storyboard)
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - undefined (Expo.plist)
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - JavaScriptCore.framework (System/Library/Frameworks/JavaScriptCore.framework)
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - AppDelegate.swift (SimpleHealthPlan/AppDelegate.swift)
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - "SimpleHealthPlan-Bridging-Header.h" ("SimpleHealthPlan/SimpleHealthPlan-Bridging-Header.h")
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - "SimpleHealthSiriIntent.appex" ("SimpleHealthSiriIntent.appex")
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - "SimpleHealthSiriIntentExtension.swift" ("SimpleHealthSiriIntentExtension.swift")
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - "SiriIntent.swift" ("SiriIntent.swift")
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - "5925A82DD11F442681A102CD" ("5925A82DD11F442681A102CD")
+[SiriExtension]  - undefined (undefined)
+[SiriExtension]  - "02D244AAED2F41938084A8D7" ("02D244AAED2F41938084A8D7")
+[SiriExtension]  - undefined (undefined)
+[SiriExtension] addEntitlement(path=SimpleHealthSiriIntent.entitlements, pbxGroup.uuid=8FD90643A3AE4E11997BC094)
 [SiriExtension] appName: SimpleHealthPlan
 [SiriExtension] mainTargetName: SimpleHealthPlan
-[SiriExtension] productFileUuid: [ '02AE1A2CC3BA447E9C84A437' ]
+[SiriExtension] productFileUuid: [ '00FA1E64931D430486A5C9F7' ]
 [SiriExtension] Embedded extension into main app target.
 » ios: ios.config.usesNonExemptEncryption: "ios.infoPlist.ITSAppUsesNonExemptEncryption" is set in the config. Ignoring abstract property "ios.config.usesNonExemptEncryption": false
 ✔ Finished prebuild
-Set CFBundleVersion to 135 in ios/SimpleHealthPlan/Info.plist (Linux)
-Set CFBundleVersion to 135 in ios/SimpleHealthSiriIntent/Info.plist (Linux)
-🔧 Patching React Native helpers.rb for Xcode 15.2 compatibility...
-✅ installing old workspace from github for linux pod install hack
-Cloning into 'react_builds_simplehealth'...
-remote: Enumerating objects: 187, done.
-remote: Counting objects: 100% (62/62), done.
-remote: Compressing objects: 100% (32/32), done.
-remote: Total 187 (delta 36), reused 49 (delta 30), pack-reused 125 (from 1)
-Receiving objects: 100% (187/187), 1.69 MiB | 122.00 KiB/s, done.
-Resolving deltas: 100% (47/47), done.
-total 40
-drwxrwxr-x  4 craig craig 4096 Jan 22 22:09 SimpleHealthPlan.xcodeproj
--rw-r--r--  1 craig craig  482 Jan 22 22:09 .xcode.env
--rw-r--r--  1 craig craig  321 Jan 22 22:09 .gitignore
-drwxrwxr-x  2 craig craig 4096 Jan 22 22:09 SimpleHealthSiriIntent
-drwxrwxr-x  4 craig craig 4096 Jan 22 22:09 SimpleHealthPlan
--rw-rw-r--  1 craig craig  226 Jan 22 22:09 Podfile.properties.json
--rw-r--r--  1 craig craig 2448 Jan 22 22:09 Podfile
-drwxrwxr-x  6 craig craig 4096 Jan 22 22:09 .
-drwxrwxr-x  2 craig craig 4096 Jan 22 22:09 SimpleHealthPlan.xcworkspace
-drwxrwxr-x 13 craig craig 4096 Jan 22 22:09 ..
-✅ updating cache: /home/craig/code/react_builds/cache/simplehealth/Pods (using mv)
+Set CFBundleVersion to 138 in ios/SimpleHealthPlan/Info.plist (Linux)
+Set CFBundleVersion to 138 in ios/SimpleHealthSiriIntent/Info.plist (Linux)
