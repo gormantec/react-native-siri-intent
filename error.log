@@ -1,4 +1,3 @@
-
 ✔ Cleared ios code
 ✔ Created native directory
 ✔ Updated package.json | no changes
@@ -33,7 +32,7 @@
 [SiriExtension]  - undefined (undefined/undefined)
 [SiriExtension] fileAlreadyExists for SimpleHealthSiriIntentExtension.swift: false
 [SiriExtension] statSync for /home/craig/code/react_builds/simplehealth/ios/SimpleHealthSiriIntent/SimpleHealthSiriIntentExtension.swift
-[SiriExtension] addFile(path=SimpleHealthSiriIntentExtension.swift, pbxGroup.uuid=7FB58C4532CF4B839AC84760)
+[SiriExtension] addFile(path=SimpleHealthSiriIntentExtension.swift, pbxGroup.uuid=4D5C29893FF9493EB203E598)
 [SiriExtension] after add file list projectfiles:
 [SiriExtension]  - undefined (BUILT_PRODUCTS_DIR/SimpleHealthPlan.app)
 [SiriExtension]  - undefined (undefined/undefined)
@@ -56,8 +55,8 @@
 [SiriExtension]  - "SimpleHealthSiriIntentExtension.swift" ("<group>"/"SimpleHealthSiriIntent/SimpleHealthSiriIntentExtension.swift")
 [SiriExtension]  - undefined (undefined/undefined)
 [SiriExtension] fileRef.uuid undefined
-[SiriExtension] fileRef.fileRef 1F75CD37F9CF4D01BF4BDA46
-[SiriExtension] ************ added(path=SimpleHealthSiriIntentExtension.swift, actualUuid=1F75CD37F9CF4D01BF4BDA46)
+[SiriExtension] fileRef.fileRef 5528C585740A44B893AC2D41
+[SiriExtension] ************ added(path=SimpleHealthSiriIntentExtension.swift, actualUuid=5528C585740A44B893AC2D41)
 [SiriExtension] before adding source list projectfiles:
 [SiriExtension]  - undefined (BUILT_PRODUCTS_DIR/SimpleHealthPlan.app)
 [SiriExtension]  - undefined (undefined/undefined)
@@ -81,7 +80,7 @@
 [SiriExtension]  - undefined (undefined/undefined)
 [SiriExtension] fileAlreadyExists for Info.plist: false
 [SiriExtension] statSync for /home/craig/code/react_builds/simplehealth/ios/SimpleHealthSiriIntent/Info.plist
-[SiriExtension] addFile(path=Info.plist, pbxGroup.uuid=7FB58C4532CF4B839AC84760)
+[SiriExtension] addFile(path=Info.plist, pbxGroup.uuid=4D5C29893FF9493EB203E598)
 [SiriExtension] after add file list projectfiles:
 [SiriExtension]  - undefined (BUILT_PRODUCTS_DIR/SimpleHealthPlan.app)
 [SiriExtension]  - undefined (undefined/undefined)
@@ -106,8 +105,8 @@
 [SiriExtension]  - "Info.plist" ("<group>"/"SimpleHealthSiriIntent/Info.plist")
 [SiriExtension]  - undefined (undefined/undefined)
 [SiriExtension] fileRef.uuid undefined
-[SiriExtension] fileRef.fileRef E12887DB610B4543A3B14451
-[SiriExtension] ************ added(path=Info.plist, actualUuid=E12887DB610B4543A3B14451)
+[SiriExtension] fileRef.fileRef 34652B8BCC894DC2A21ED237
+[SiriExtension] ************ added(path=Info.plist, actualUuid=34652B8BCC894DC2A21ED237)
 [SiriExtension] before adding source list projectfiles:
 [SiriExtension]  - undefined (BUILT_PRODUCTS_DIR/SimpleHealthPlan.app)
 [SiriExtension]  - undefined (undefined/undefined)
@@ -133,7 +132,7 @@
 [SiriExtension]  - undefined (undefined/undefined)
 [SiriExtension] fileAlreadyExists for SiriIntent.swift: false
 [SiriExtension] statSync for /home/craig/code/react_builds/simplehealth/ios/SimpleHealthSiriIntent/SiriIntent.swift
-[SiriExtension] addFile(path=SiriIntent.swift, pbxGroup.uuid=7FB58C4532CF4B839AC84760)
+[SiriExtension] addFile(path=SiriIntent.swift, pbxGroup.uuid=4D5C29893FF9493EB203E598)
 [SiriExtension] after add file list projectfiles:
 [SiriExtension]  - undefined (BUILT_PRODUCTS_DIR/SimpleHealthPlan.app)
 [SiriExtension]  - undefined (undefined/undefined)
@@ -160,10 +159,10 @@
 [SiriExtension]  - "SiriIntent.swift" ("<group>"/"SimpleHealthSiriIntent/SiriIntent.swift")
 [SiriExtension]  - undefined (undefined/undefined)
 [SiriExtension] fileRef.uuid undefined
-[SiriExtension] fileRef.fileRef E90CB2464161440CAB232F13
-[SiriExtension] ************ added(path=SiriIntent.swift, actualUuid=E90CB2464161440CAB232F13)
-[SiriExtension] sourceFiles: [ '1F75CD37F9CF4D01BF4BDA46', 'E90CB2464161440CAB232F13' ]
-[SiriExtension] resourceFiles: [ 'E12887DB610B4543A3B14451' ]
+[SiriExtension] fileRef.fileRef CA725351278845C392E04A07
+[SiriExtension] ************ added(path=SiriIntent.swift, actualUuid=CA725351278845C392E04A07)
+[SiriExtension] sourceFiles: [ '5528C585740A44B893AC2D41', 'CA725351278845C392E04A07' ]
+[SiriExtension] resourceFiles: [ '34652B8BCC894DC2A21ED237' ]
 [SiriExtension] Updating build settings for: "SimpleHealthSiriIntent"
 [SiriExtension] Updating build settings for: "SimpleHealthSiriIntent"
 [SiriExtension] before adding entitlements list project files:
@@ -191,16 +190,13 @@
 [SiriExtension]  - undefined (undefined)
 [SiriExtension]  - "SiriIntent.swift" ("SimpleHealthSiriIntent/SiriIntent.swift")
 [SiriExtension]  - undefined (undefined)
-[SiriExtension]  - "1F75CD37F9CF4D01BF4BDA46" ("1F75CD37F9CF4D01BF4BDA46")
-[SiriExtension]  - undefined (undefined)
-[SiriExtension]  - "E90CB2464161440CAB232F13" ("E90CB2464161440CAB232F13")
-[SiriExtension]  - undefined (undefined)
-[SiriExtension]  - "E12887DB610B4543A3B14451" ("E12887DB610B4543A3B14451")
-[SiriExtension]  - undefined (undefined)
-[SiriExtension] addEntitlement(path=SimpleHealthSiriIntent.entitlements, pbxGroup.uuid=7FB58C4532CF4B839AC84760)
+[SiriExtension] addEntitlement(path=SimpleHealthSiriIntent.entitlements, pbxGroup.uuid=4D5C29893FF9493EB203E598)
 [SiriExtension] appName: SimpleHealthPlan
 [SiriExtension] mainTargetName: SimpleHealthPlan
-[SiriExtension] productFileUuid: [ '24A335A37CE044E58551710B' ]
+[SiriExtension] productFileUuid: [ '4D50F51C83D84E7AA813A996' ]
 [SiriExtension] Embedded extension into main app target.
 » ios: ios.config.usesNonExemptEncryption: "ios.infoPlist.ITSAppUsesNonExemptEncryption" is set in the config. Ignoring abstract property "ios.config.usesNonExemptEncryption": false
 ✔ Finished prebuild
+Set CFBundleVersion to 138 in ios/SimpleHealthPlan/Info.plist (Linux)
+Set CFBundleVersion to 138 in ios/SimpleHealthSiriIntent/Info.plist (Linux)
+🔧 Patching React Native helpers.rb for Xcode 15.2 compatibility...
