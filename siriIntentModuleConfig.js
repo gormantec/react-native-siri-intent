@@ -94,39 +94,45 @@ const withSiriIntentModule = (config) => {
             const filePath = path.join(destDir, file);
 
             // Check if file is already in the Xcode project
-          const fileAlreadyExists = Object.values(project.pbxFileReferenceSection())
-            .some(ref => {
-              console.info(`[SiriExtension] Checking existing file ref:`, ref);
-              if (!ref) return false;
-              // Check for both file name and any UUID-style path
-              return ref.path === file || ref.name === file || ref.path === filePath || ref.name === filePath;
-            });
+            const fileAlreadyExists = Object.values(project.pbxFileReferenceSection())
+              .some(ref => {
+                console.info(`[SiriExtension] Checking existing file ref:`, ref);
+                if (!ref) return false;
+                // Check for both file name and any UUID-style path
+                return ref.path === file || ref.name === file || ref.path === filePath || ref.name === filePath;
+              });
+
+            console.info(`[SiriExtension] fileAlreadyExists for ${file}:`, fileAlreadyExists);
 
             if (fileAlreadyExists) {
               console.info(`[SiriExtension] File already exists in Xcode project: ${file}`);
               return;
             }
-         
+
             // Log file stats and permissions
             try {
               const stat = fs.statSync(filePath);
+              console.info(`[SiriExtension] statSync for ${filePath}:`, stat);
             } catch (err) {
               console.warn(`[SiriExtension] statSync error for ${filePath}:`, err);
             }
+
             if (fs.existsSync(filePath) && typeof file === 'string') {
               console.info(`[SiriExtension] ************ addFile(path=${file}, pbxGroup.uuid=${pbxGroup.uuid})`);
               const fileRef = project.addFile(file, pbxGroup.uuid);
+              console.info(`[SiriExtension] addFile returned:`, fileRef);
+
+              // Log the current PBXFileReferenceSection
+              console.info(`[SiriExtension] PBXFileReferenceSection after addFile:`, project.pbxFileReferenceSection());
+
               if (fileRef) {
-                  // Depending on your xcode library version, it might be fileRef.uuid or fileRef.fileRef
-                
-                  const actualUuid = fileRef.uuid || fileRef.fileRef; 
-                  console.info(`[SiriExtension] ************ added(path=${file}, actualUuid=${actualUuid})`);
-                  
-                  if (file.endsWith('.swift')) {
-                      sourceFiles.push(actualUuid);
-                  } else if (file.endsWith('.plist')) {
-                      resourceFiles.push(actualUuid);
-                  }
+                const actualUuid = fileRef.uuid || fileRef.fileRef;
+                console.info(`[SiriExtension] ************ added(path=${file}, actualUuid=${actualUuid})`);
+                if (file.endsWith('.swift')) {
+                  sourceFiles.push(fileRef); // Use the fileRef object, not just the UUID
+                } else if (file.endsWith('.plist')) {
+                  resourceFiles.push(fileRef);
+                }
               } else {
                 console.warn(`[SiriExtension] Failed to add file to Xcode project: ${file}`);
               }
