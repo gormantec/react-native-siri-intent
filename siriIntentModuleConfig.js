@@ -127,11 +127,13 @@ const withSiriIntentModule = (config) => {
 
               if (fileRef) {
                 const actualUuid = fileRef.uuid || fileRef.fileRef;
+                console.info(`[SiriExtension] fileRef.uuid ${fileRef.uuid}`);
+                console.info(`[SiriExtension] fileRef.fileRef ${fileRef.fileRef}`);
                 console.info(`[SiriExtension] ************ added(path=${file}, actualUuid=${actualUuid})`);
                 if (file.endsWith('.swift')) {
-                  sourceFiles.push(fileRef); // Use the fileRef object, not just the UUID
+                  sourceFiles.push(actualUuid); 
                 } else if (file.endsWith('.plist')) {
-                  resourceFiles.push(fileRef);
+                  resourceFiles.push(actualUuid);
                 }
               } else {
                 console.warn(`[SiriExtension] Failed to add file to Xcode project: ${file}`);
