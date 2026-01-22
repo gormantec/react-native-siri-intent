@@ -153,9 +153,9 @@ const withSiriIntentModule = (config) => {
         
         // 4. Add Build Phases using the file references
         console.info(`[SiriExtension] sourceFiles:`, sourceFiles);
-        project.addBuildPhase(sourceFiles, 'PBXSourcesBuildPhase', 'Sources', target.uuid);
+        //project.addBuildPhase(sourceFiles, 'PBXSourcesBuildPhase', 'Sources', target.uuid);
         console.info(`[SiriExtension] resourceFiles:`, resourceFiles);
-        project.addBuildPhase(resourceFiles, 'PBXResourcesBuildPhase', 'Resources', target.uuid);
+        //project.addBuildPhase(resourceFiles, 'PBXResourcesBuildPhase', 'Resources', target.uuid);
 
         // 5. Update Build Settings
         const configurations = project.pbxXCBuildConfigurationSection();
