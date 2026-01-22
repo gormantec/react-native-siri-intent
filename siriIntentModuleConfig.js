@@ -94,9 +94,11 @@ const withSiriIntentModule = (config) => {
             const filePath = path.join(destDir, file);
 
             // Check if file is already in the Xcode project
+
+            console.info(`[SiriExtension] before adding source list projectfiles:`);
             const fileAlreadyExists = Object.values(project.pbxFileReferenceSection())
               .some(ref => {
-                console.info(`[SiriExtension] Checking existing file ref:`, ref);
+                console.info(`[SiriExtension]  - ${ref.name} (${ref.path})`);
                 if (!ref) return false;
                 // Check for both file name and any UUID-style path
                 return ref.path === file || ref.name === file || ref.path === filePath || ref.name === filePath;
@@ -185,8 +187,9 @@ const withSiriIntentModule = (config) => {
         fs.writeFileSync(entitlementsPath, entitlementsContent.trim());
         if (fs.existsSync(entitlementsPath) && typeof entitlementsPath === 'string') {
           // Check if entitlements file is already in the Xcode project
+          console.info(`[SiriExtension] before adding entitlements list project files:`);
           const entAlreadyExists = Object.values(project.pbxFileReferenceSection()).some(ref => {
-              console.info(`[SiriExtension] Checking existing entitlements file ref:`, ref);
+              console.info(`[SiriExtension]  - ${ref.name} (${ref.path})`);
               return ref && ref.path === entitlementsFilename;
         });
 
