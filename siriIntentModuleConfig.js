@@ -98,7 +98,7 @@ const withSiriIntentModule = (config) => {
             console.info(`[SiriExtension] before adding source list projectfiles:`);
             const fileAlreadyExists = Object.values(project.pbxFileReferenceSection())
               .some(ref => {
-                console.info(`[SiriExtension]  - ${ref.name} (${ref.path})`);
+                console.info(`[SiriExtension]  - ${ref.name} (${ref.sourceTree}/${ref.path})`);
                 if (!ref) return false;
                 // Check for both file name and any UUID-style path
                 return ref.path === file || ref.name === file || ref.path === filePath || ref.name === filePath;
@@ -114,18 +114,22 @@ const withSiriIntentModule = (config) => {
             // Log file stats and permissions
             try {
               const stat = fs.statSync(filePath);
-              console.info(`[SiriExtension] statSync for ${filePath}:`, stat);
+              console.info(`[SiriExtension] statSync for ${filePath}`);
             } catch (err) {
               console.warn(`[SiriExtension] statSync error for ${filePath}:`, err);
             }
 
             if (fs.existsSync(filePath) && typeof file === 'string') {
-              console.info(`[SiriExtension] ************ addFile(path=${file}, pbxGroup.uuid=${pbxGroup.uuid})`);
+              console.info(`[SiriExtension] addFile(path=${file}, pbxGroup.uuid=${pbxGroup.uuid})`);
               const fileRef = project.addFile(file, pbxGroup.uuid);
-              console.info(`[SiriExtension] addFile returned:`, fileRef);
 
               // Log the current PBXFileReferenceSection
-              console.info(`[SiriExtension] PBXFileReferenceSection after addFile:`, project.pbxFileReferenceSection());
+              console.info(`[SiriExtension] after add file list projectfiles:`);
+              Object.values(project.pbxFileReferenceSection()).some(ref => {
+                    console.info(`[SiriExtension]  - ${ref.name} (${ref.sourceTree}/${ref.path})`);
+                    return false
+              });
+              
 
               if (fileRef) {
                 const actualUuid = fileRef.uuid || fileRef.fileRef;
@@ -196,7 +200,7 @@ const withSiriIntentModule = (config) => {
           if (entAlreadyExists) {
             console.info(`[SiriExtension] Entitlements file already exists in Xcode project: ${entitlementsFilename}`);
           } else {
-            console.info(`[SiriExtension] ************ addEntitlement(path=${entitlementsFilename}, pbxGroup.uuid=${pbxGroup.uuid})`);
+            console.info(`[SiriExtension] addEntitlement(path=${entitlementsFilename}, pbxGroup.uuid=${pbxGroup.uuid})`);
             const entFileRef = project.addFile(entitlementsFilename, pbxGroup.uuid);
             if (entFileRef) {
               resourceFiles.push(entFileRef.uuid || entFileRef.fileRef);
