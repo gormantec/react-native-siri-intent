@@ -222,6 +222,9 @@ const withSiriIntentModule = (config) => {
           console.warn(`[SiriExtension] mainTargetName:`, mainTargetName);
 
           const productFileUuid = target.pbxNativeTarget.productReference; 
+          const productFilePath = target.pbxNativeTarget.path; 
+          console.info(`[SiriExtension] target.pbxNativeTarget:`, target.pbxNativeTarget);
+          console.info(`[SiriExtension] productFilePath:`, productFilePath);
 
           if (!productFileUuid) {
               throw new Error(`[SiriExtension] Failed to find productReference for ${targetName}`);
@@ -230,7 +233,7 @@ const withSiriIntentModule = (config) => {
           console.warn(`[SiriExtension] productFileUuid:`, [productFileUuid]);
           if (mainTargetName === appName) {
               project.addBuildPhase(
-                  [productFileUuid], 
+                  [productFilePath], 
                   'PBXCopyFilesBuildPhase',
                   'Embed App Extensions',
                   mainTarget.uuid,
