@@ -228,7 +228,7 @@ const withSiriIntentModule = (config) => {
               throw new Error(`[SiriExtension] Failed to find productReference for ${targetName}`);
           }
 
-          console.warn(`[SiriExtension] productFileUuid:`, [productFileUuid]);
+          console.warn(`[SiriExtension] productFileUuid:`, [productFileRef.path]);
           if (mainTargetName === appName) {
               project.addBuildPhase(
                   [productFileRef.path], 
