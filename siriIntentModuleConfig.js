@@ -149,7 +149,7 @@ const withSiriIntentModule = (config) => {
                 if (file.endsWith('.swift')) {
                   sourceFiles.push(relPath); 
                 } else if (file.endsWith('.plist')) {
-                  resourceFiles.push(relPath);
+                  //resourceFiles.push(relPath);
                 }
             } else {
               console.warn(`[SiriExtension] File does not exist or path invalid: ${filePath} -- ${file}`);
