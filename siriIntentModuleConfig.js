@@ -48,6 +48,8 @@ const withSiriIntentModule = (config) => {
         console.info(`[SiriExtension] Copying file: ${file}`);
         if (fs.existsSync(src)) {
             fs.copyFileSync(src, dst);
+            console.info(`[SiriExtension] Copied ${src} to ${dst}`);
+            if(file.endsWith('.plist')) console.info(fs.readFileSync(dst, 'utf8'));
         } else {
             console.warn(`[SiriExtension] Could not find source file: ${src}`);
         }
@@ -91,9 +93,7 @@ const withSiriIntentModule = (config) => {
             if (fs.existsSync(filePath) && typeof file === 'string' && file.endsWith('.swift')) {
               const relPath = path.join(EXTENSION_NAME, file); 
               sourceFiles.push(relPath); 
-            } else {
-              console.warn(`[SiriExtension] File does not exist or path invalid: ${filePath} -- ${file}`);
-            }
+            } 
         });
         
         // 4. Add Build Phases using the file references
