@@ -150,12 +150,12 @@ const withSiriIntentModule = (config) => {
           if (entAlreadyExists) {
             console.info(`[SiriExtension] Entitlements file already exists in Xcode project: ${entitlementsFilename}`);
           } else {
-            const relPath = path.join(EXTENSION_NAME, entitlementsFilename); 
+            //const relPath = path.join(EXTENSION_NAME, entitlementsFilename); 
             console.info(`[SiriExtension] addEntitlement(path=${relPath}, pbxGroup.uuid=${pbxGroup.uuid})`);
-            const entFileRef = project.addFile(relPath, pbxGroup.uuid);
-            if (entFileRef) {
-              resourceFiles.push(relPath);
-            }
+            const entFileRef = project.addFile(entitlementsFilename, pbxGroup.uuid);
+           // if (entFileRef) {
+           //   resourceFiles.push(relPath);
+           // }
           }
         } else {
           console.warn(`[SiriExtension] Entitlements file does not exist or path invalid file: ${entitlementsFilename}`);
