@@ -132,6 +132,8 @@ const withSiriIntentModule = (config) => {
     <array>
         <string>${APP_GROUP_IDENTIFIER}</string>
     </array>
+    <key>com.apple.developer.siri</key>
+    <true/>
 </dict>
 </plist>
 `;
