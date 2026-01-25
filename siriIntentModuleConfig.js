@@ -109,7 +109,7 @@ const withSiriIntentModule = (config) => {
             if (conf.buildSettings && conf.buildSettings.PRODUCT_NAME === `"${targetName}"`) {
                 console.warn(`[SiriExtension] Updating build settings for:`, conf.buildSettings.PRODUCT_NAME);
                 conf.buildSettings.INFOPLIST_FILE = `${targetName}/Info.plist`;
-                conf.buildSettings.IPHONEOS_DEPLOYMENT_TARGET = '16.0';
+                conf.buildSettings.IPHONEOS_DEPLOYMENT_TARGET = '16.1';
                 conf.buildSettings.SWIFT_VERSION = '5.0';
                 conf.buildSettings.PRODUCT_BUNDLE_IDENTIFIER = bundleId;
                 conf.buildSettings.CODE_SIGN_ENTITLEMENTS = `${targetName}/${targetName}.entitlements`;
@@ -151,7 +151,7 @@ const withSiriIntentModule = (config) => {
             console.info(`[SiriExtension] Entitlements file already exists in Xcode project: ${entitlementsFilename}`);
           } else {
             //const relPath = path.join(EXTENSION_NAME, entitlementsFilename); 
-            console.info(`[SiriExtension] addEntitlement(path=${relPath}, pbxGroup.uuid=${pbxGroup.uuid})`);
+            console.info(`[SiriExtension] addEntitlement(path=${entitlementsFilename}, pbxGroup.uuid=${pbxGroup.uuid})`);
             const entFileRef = project.addFile(entitlementsFilename, pbxGroup.uuid);
            // if (entFileRef) {
            //   resourceFiles.push(relPath);
