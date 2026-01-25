@@ -109,7 +109,7 @@ const withSiriIntentModule = (config) => {
             if (conf.buildSettings && conf.buildSettings.PRODUCT_NAME === `"${targetName}"`) {
                 console.warn(`[SiriExtension] Updating build settings for:`, conf.buildSettings.PRODUCT_NAME);
                 conf.buildSettings.INFOPLIST_FILE = `${targetName}/Info.plist`;
-                conf.buildSettings.IPHONEOS_DEPLOYMENT_TARGET = '16.0';
+                conf.buildSettings.IPHONEOS_DEPLOYMENT_TARGET = '16.1';
                 conf.buildSettings.SWIFT_VERSION = '5.0';
                 conf.buildSettings.PRODUCT_BUNDLE_IDENTIFIER = bundleId;
                 conf.buildSettings.CODE_SIGN_ENTITLEMENTS = `${targetName}/${targetName}.entitlements`;
