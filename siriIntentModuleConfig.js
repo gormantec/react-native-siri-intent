@@ -91,9 +91,14 @@ const withSiriIntentModule = (config) => {
 
 
             if (fs.existsSync(filePath) && typeof file === 'string' && file.endsWith('.swift')) {
-              const relPath = path.join(EXTENSION_NAME, file); 
-              sourceFiles.push(relPath); 
-            } 
+              const relPath = path.join(EXTENSION_NAME, file);
+              // Add the Swift file to the extension's PBXGroup if not already present
+              const fileRef = project.addFile(relPath, pbxGroup.uuid);
+              if (fileRef) {
+                console.info(`[SiriExtension] Added ${relPath} to PBXGroup ${targetName}`);
+              }
+              sourceFiles.push(relPath);
+            }
         });
         
         // 4. Add Build Phases using the file references
