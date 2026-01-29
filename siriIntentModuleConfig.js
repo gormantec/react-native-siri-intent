@@ -173,7 +173,7 @@ const withSiriIntentModule = (config) => {
           console.info('[SiriExtension] productFileRef:', productFileRef);
           if (!productFileUuid) {
               throw new Error(`[SiriExtension] Failed to find productReference for ${targetName}`);
-          }_
+          }
 
           console.warn(`[SiriExtension] productFileUuid:`, [productFileRef.path]);
           if (mainTargetName === appName) {
