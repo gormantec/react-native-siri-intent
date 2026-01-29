@@ -176,7 +176,7 @@ const withSiriIntentModule = (config) => {
           }
 
           console.warn(`[SiriExtension] productFileUuid:`, [productFileRef.path]);
-          if (false && mainTargetName === appName) {
+          if (mainTargetName === appName) {
               project.addBuildPhase(
                   [productFileRef.path], 
                   'PBXCopyFilesBuildPhase',
