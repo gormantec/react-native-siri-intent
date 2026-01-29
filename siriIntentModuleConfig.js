@@ -173,7 +173,7 @@ const withSiriIntentModule = (config) => {
           console.info('[SiriExtension] productFileRef:', productFileRef);
           if (!productFileUuid) {
               throw new Error(`[SiriExtension] Failed to find productReference for ${targetName}`);
-          }
+          }_
 
           console.warn(`[SiriExtension] productFileUuid:`, [productFileRef.path]);
           if (mainTargetName === appName) {
@@ -185,6 +185,14 @@ const withSiriIntentModule = (config) => {
                   'app_extension'
               );
               console.warn(`[SiriExtension] Embedded extension into main app target.`);
+
+
+              Object.values(project.pbxFileReferenceSection())
+              .some(ref => {
+                  console.info(`[SiriExtension] pbxFileReferenceSection: - ${ref.name} (${ref.path})`);
+                  return false;
+              });
+
           } else {
               console.warn(`[SiriExtension] mainTargetName does not match appName. Not embedding.`);
           }
