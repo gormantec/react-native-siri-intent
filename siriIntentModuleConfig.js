@@ -175,6 +175,15 @@ const withSiriIntentModule = (config) => {
               throw new Error(`[SiriExtension] Failed to find productReference for ${targetName}`);
           }
 
+          // Ensure the .appex product reference is in the Products group
+          const productsGroup = Object.values(project.hash.project.objects.PBXGroup).find(
+            g => g.name === 'Products' || g.comment === 'Products'
+          );
+          if (productsGroup && !productsGroup.children.some(child => child.value === productFileUuid)) {
+            productsGroup.children.push({ value: productFileUuid, comment: `${targetName}.appex` });
+            console.info(`[SiriExtension] Added ${targetName}.appex to Products group.`);
+          }
+
           console.warn(`[SiriExtension] productFileUuid:`, [productFileRef.path]);
           if (mainTargetName === appName) {
               project.addBuildPhase(
