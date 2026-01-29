@@ -163,10 +163,10 @@ const withSiriIntentModule = (config) => {
 
         // 7. Embed the Extension into the Main App
         const mainTarget = project.getFirstTarget();
-        console.info(`[SiriExtension] appName: '${appName}'`);
+        console.info(`[SiriExtension] appName:`, appName);
         if (mainTarget && mainTarget.firstTarget && mainTarget.firstTarget.name) {
-          const mainTargetName = mainTarget.firstTarget.name.replace(/"/g, '').trim();
-          console.warn(`[SiriExtension] mainTargetName: '${mainTargetName}'`);
+          const mainTargetName = mainTarget.firstTarget.name.replace(/"/g, '');
+          console.warn(`[SiriExtension] mainTargetName:`, mainTargetName);
 
           const productFileUuid = target.pbxNativeTarget.productReference; 
           const productFileRef = project.pbxFileReferenceSection()[productFileUuid];
@@ -186,8 +186,6 @@ const withSiriIntentModule = (config) => {
               );
               console.warn(`[SiriExtension] Embedded extension into main app target.`);
           } else {
-              console.warn(`[SiriExtension] mainTargetName=${mainTargetName}`);
-              console.warn(`[SiriExtension] appName=${appName}`);
               console.warn(`[SiriExtension] mainTargetName does not match appName. Not embedding.`);
           }
         } else {
