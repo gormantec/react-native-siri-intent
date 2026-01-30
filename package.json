@@ -5,14 +5,14 @@
   "files": [
     "ios",
     "index.js",
-    "siriIntentModuleConfig.js",
+    "moduleConfig.js",
     "react-native-siri-intent.podspec",
     "expo-module.config.json"
   ],
   "expo": {
     "autolinking": {
       "ios": {
-        "plugin": "./siriIntentModuleConfig.js"
+        "plugin": "./moduleConfig.js"
       }
     }
   },
