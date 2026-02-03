@@ -10,6 +10,9 @@
     "expo-module.config.json"
   ],
   "expo": {
+    "plugins": [
+      "./moduleConfig"
+    ],
     "autolinking": {
       "ios": {
         "plugin": "./moduleConfig.js"
